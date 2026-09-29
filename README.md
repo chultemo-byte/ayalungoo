@@ -2,19 +2,29 @@
 
 Learn to float. Then learn to dance with water.
 
-**Amita** is the water teacher on this site. Sanskrit *Amita* (अमिता) means boundless. She teaches why the water holds you before any stroke.
+A **living teaching app** — not a lap log, not a brochure. People should really learn how to swim.
 
-Live domain: [ayalungoo.com](https://ayalungoo.com)
-Repo: this one.
+**Amita** is the water teacher. Sanskrit *Amita* (अमिता) means boundless. She walks five rooms: Still → Listen → Dance → Breathe → Stroke. Safety is Lesson Zero. Pool before river, lake, or ocean.
+
+Live preview: [ayalungoo.vercel.app](https://ayalungoo.vercel.app)
+Domain: [ayalungoo.com](https://ayalungoo.com) (point Namecheap DNS at Vercel)
 
 ## What this is
 
-A swimming school that actually teaches swimming — mental prep, why we float, water as partner (body dancing), through science, Ayurveda (Jala), and spirit. Not a lap-logging app.
+Mental prep. Why we float. Water as partner (body dancing). Science, Ayurveda (Jala), and spirit. A grown-up in the water.
+
+## Living app
+
+- Amita talks in the page
+- Five rooms plus safety and four waters
+- Child voice / grown-up voice
+- Remembers the room in the browser
+- Add to Home Screen (PWA)
 
 ## Amita
 
-Teaching role, not a mascot. Same house law as the School of 112 Doorways bots: no praise, no streaks, no medical claims. A living teacher outranks her if pain or panic appears. Children need a grown-up in the water.
+Teaching role, not a mascot. No praise, no streaks, no medical claims. A living teacher outranks her if pain or panic appears. Children need a grown-up in the water. Never hold-until.
 
 ## Deploy
 
-Static site. Connect this repo to Vercel, then point `ayalungoo.com` at the project.
+Static site on Vercel from this repo. Then attach `ayalungoo.com`.
