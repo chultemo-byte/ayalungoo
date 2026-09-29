@@ -3,82 +3,57 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ayalungoo — a living swimming school</title>
-  <meta name="description" content="A living app that teaches people how to really swim. Float first. Then dance with water. Amita is the teacher." />
+  <title>Ayalungoo — living school</title>
+  <meta name="description" content="Learn how to swim for real. Float first. Play your song. Amita is the teacher." />
   <meta name="theme-color" content="#07161c" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="Ayalungoo" />
   <link rel="manifest" href="/manifest.json" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --deep: #07161c;
-      --water: #0b2a33;
-      --teal: #1a5a63;
-      --foam: #d7ece8;
-      --cream: #f4efe4;
-      --gold: #c9a36a;
-      --ink: #e8f2f0;
-      --muted: #9bb8b4;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; }
-    body {
-      font-family: "Source Sans 3", system-ui, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 20% -10%, #163a44 0%, transparent 55%),
-        radial-gradient(900px 600px at 110% 20%, #1c4a3d 0%, transparent 45%),
-        linear-gradient(180deg, var(--deep), var(--water) 55%, #061318);
-      color: var(--ink);
-      min-height: 100vh;
-    }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 22px 18px 56px; }
-    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
-    .mark { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.55rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .mark span { color: var(--gold); }
-    .tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-    .chip { border: 1px solid rgba(201,163,106,0.35); background: rgba(7,22,28,0.5); color: var(--cream); padding: 6px 10px; font: 500 0.8rem "Source Sans 3", sans-serif; cursor: pointer; }
-    .chip.on { background: rgba(201,163,106,0.2); border-color: var(--gold); color: var(--gold); }
-    h1 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.06; margin: 0 0 10px; }
-    .lede { max-width: 40rem; color: var(--foam); font-size: 1.08rem; line-height: 1.5; margin: 0 0 22px; }
-    .path { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 0 0 14px; }
-    .stone { border: 1px solid rgba(201,163,106,0.28); background: rgba(7,22,28,0.45); color: var(--cream); text-align: left; padding: 12px 10px; cursor: pointer; }
-    .stone small { display: block; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.64rem; margin-bottom: 4px; }
-    .stone.on, .stone:hover, .stone:focus { border-color: var(--gold); }
-    .stone.here { background: rgba(26,90,99,0.45); }
-    .extras { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
-    .stage { display: grid; grid-template-columns: 1fr 1.1fr; gap: 18px; align-items: stretch; }
-    .lesson, .chat { background: rgba(8, 24, 30, 0.72); border: 1px solid rgba(215,236,232,0.12); padding: 18px; min-height: 440px; }
-    .lesson h2, .chat h2 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; margin: 0 0 10px; font-size: 1.55rem; }
-    .where { color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 8px; }
-    .lesson p { color: var(--foam); line-height: 1.55; margin: 0 0 11px; }
-    .lesson ol { color: var(--foam); line-height: 1.5; padding-left: 1.15rem; margin: 0 0 12px; }
-    .lesson li { margin-bottom: 6px; }
-    .grown { border-top: 1px solid rgba(215,236,232,0.12); margin-top: 14px; padding-top: 12px; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
-    .formula { font-family: ui-monospace, Menlo, monospace; color: var(--gold); font-size: 0.92rem; margin: 10px 0; }
-    .chat { display: flex; flex-direction: column; }
-    .log { flex: 1; overflow-y: auto; max-height: 420px; display: flex; flex-direction: column; gap: 10px; }
-    .bubble { max-width: 94%; padding: 10px 12px; line-height: 1.45; white-space: pre-wrap; }
-    .amita { background: rgba(26,90,99,0.45); border-left: 2px solid var(--gold); }
-    .you { background: rgba(244,239,228,0.08); align-self: flex-end; }
-    .who { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-    form { display: flex; gap: 8px; margin-top: 12px; }
-    input { flex: 1; background: #061318; border: 1px solid rgba(215,236,232,0.2); color: var(--cream); padding: 10px 12px; font: inherit; }
-    button.go { background: var(--gold); color: #1a1208; border: 0; padding: 10px 14px; font: 600 0.9rem "Source Sans 3", sans-serif; cursor: pointer; }
-    footer { margin-top: 28px; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
-    @media (max-width: 860px) { .path, .stage { grid-template-columns: 1fr; } }
+    :root { --deep:#07161c; --water:#0b2a33; --foam:#d7ece8; --cream:#f4efe4; --gold:#c9a36a; --ink:#e8f2f0; --muted:#9bb8b4; }
+    * { box-sizing: border-box; } html,body{margin:0;min-height:100%;}
+    body{font-family:Georgia,serif;color:var(--ink);min-height:100vh;background:linear-gradient(180deg,#07161c,#0b2a33 55%,#061318);}
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 16px 48px;}
+    header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+    .mark{letter-spacing:.08em;text-transform:uppercase;} .mark span{color:var(--gold);}
+    .chip{border:1px solid rgba(201,163,106,.35);background:rgba(7,22,28,.5);color:var(--cream);padding:6px 10px;cursor:pointer;}
+    .chip.on{border-color:var(--gold);color:var(--gold);}
+    h1{font-weight:500;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.08;margin:0 0 10px;}
+    .lede{color:var(--foam);max-width:40rem;line-height:1.5;}
+    .path{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:16px 0 10px;}
+    .stone{border:1px solid rgba(201,163,106,.28);background:rgba(7,22,28,.45);color:var(--cream);text-align:left;padding:10px;cursor:pointer;}
+    .stone small{display:block;color:var(--gold);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;}
+    .stone.here{background:rgba(26,90,99,.45);border-color:var(--gold);}
+    .extras{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+    .stage{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;}
+    .lesson,.chat{background:rgba(8,24,30,.72);border:1px solid rgba(215,236,232,.12);padding:16px;min-height:400px;}
+    h2{font-weight:500;margin:0 0 8px;}
+    .where{color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem;}
+    .lesson p,.lesson li,.grown{color:var(--foam);line-height:1.5;}
+    .grown{border-top:1px solid rgba(215,236,232,.12);margin-top:12px;padding-top:10px;color:var(--muted);font-size:.9rem;}
+    .chat{display:flex;flex-direction:column;}
+    .log{flex:1;overflow-y:auto;max-height:340px;display:flex;flex-direction:column;gap:8px;}
+    .bubble{max-width:94%;padding:8px 10px;white-space:pre-wrap;}
+    .amita{background:rgba(26,90,99,.45);border-left:2px solid var(--gold);}
+    .you{background:rgba(244,239,228,.08);align-self:flex-end;}
+    .who{display:block;color:var(--gold);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;}
+    form.ask{display:flex;gap:8px;margin-top:10px;}
+    input{flex:1;background:#061318;border:1px solid rgba(215,236,232,.2);color:var(--cream);padding:8px 10px;}
+    button.go{background:var(--gold);color:#1a1208;border:0;padding:8px 12px;font-weight:600;cursor:pointer;}
+    .frame{position:relative;padding-top:56.25%;background:#041014;margin:10px 0;}
+    .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+    .fav{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid rgba(215,236,232,.12);padding:8px;margin-top:6px;color:var(--foam);}
+    .fav button{background:transparent;color:var(--gold);border:1px solid rgba(201,163,106,.35);padding:4px 8px;cursor:pointer;}
+    footer{margin-top:22px;color:var(--muted);font-size:.84rem;}
+    @media(max-width:860px){.path,.stage{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="mark">Ayalu<span>ngoo</span></div>
-      <div class="tools">
+      <div>
         <button class="chip" id="kidBtn" type="button">Child voice</button>
         <button class="chip" id="grownBtn" type="button">Grown-up</button>
-        <span class="chip" id="liveChip">Living app</span>
       </div>
     </header>
     <h1>Learn how to swim.<br>For real.</h1>
@@ -87,6 +62,7 @@
     <div class="extras">
       <button class="stone" data-room="safety" type="button"><small>Lesson zero</small>Safety</button>
       <button class="stone" data-room="waters" type="button"><small>Where</small>Pool · river · lake · ocean</button>
+      <button class="stone" data-room="watch" type="button"><small>Melody</small>Songs + 1-min news</button>
     </div>
     <div class="stage">
       <section class="lesson">
@@ -95,20 +71,13 @@
         <div id="body"></div>
         <div class="grown" id="grownBox"></div>
       </section>
-      <section class="chat" aria-label="Amita the water teacher">
+      <section class="chat">
         <h2>Amita</h2>
         <div class="log" id="log"></div>
-        <form id="form">
-          <input id="q" autocomplete="off" placeholder="Ask Amita…" />
-          <button class="go" type="submit">Speak</button>
-        </form>
+        <form class="ask" id="form"><input id="q" autocomplete="off" placeholder="Ask Amita…" /><button class="go" type="submit">Speak</button></form>
       </section>
     </div>
-    <footer>
-      Ayalungoo is a living school in the browser. Amita remembers the room you are in.
-      Children need a grown-up in the water. Amita is a teacher, not a doctor.
-      Pain or panic: get out and find a person. A living teacher outranks this app.
-    </footer>
+    <footer>Melody plays YouTube or Vimeo links. We do not copy the files. Ask a grown-up before a video. In the pool, watch the child, not the screen.</footer>
   </div>
   <script src="/school.js"></script>
 </body>
