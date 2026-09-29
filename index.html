@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ayalungoo — living school</title>
-  <meta name="description" content="Learn how to swim for real. Float first. Play your song. Amita is the teacher." />
+  <title>Ayalungoo — free living school</title>
+  <meta name="description" content="Free swimming school. Learn how to swim for real. Float first. Amita is the teacher." />
   <meta name="theme-color" content="#07161c" />
   <link rel="manifest" href="/manifest.json" />
   <style>
@@ -27,8 +27,8 @@
     .lesson,.chat{background:rgba(8,24,30,.72);border:1px solid rgba(215,236,232,.12);padding:16px;min-height:400px;}
     h2{font-weight:500;margin:0 0 8px;}
     .where{color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem;}
-    .lesson p,.lesson li,.grown{color:var(--foam);line-height:1.5;}
-    .grown{border-top:1px solid rgba(215,236,232,.12);margin-top:12px;padding-top:10px;color:var(--muted);font-size:.9rem;}
+    .lesson p,.lesson li{color:var(--foam);line-height:1.5;}
+    .grown{border-top:1px solid rgba(215,236,232,.12);margin-top:12px;padding-top:10px;color:var(--muted);font-size:.9rem;line-height:1.5;}
     .chat{display:flex;flex-direction:column;}
     .log{flex:1;overflow-y:auto;max-height:340px;display:flex;flex-direction:column;gap:8px;}
     .bubble{max-width:94%;padding:8px 10px;white-space:pre-wrap;}
@@ -43,7 +43,7 @@
     .row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
     .fav{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid rgba(215,236,232,.12);padding:8px;margin-top:6px;color:var(--foam);}
     .fav button{background:transparent;color:var(--gold);border:1px solid rgba(201,163,106,.35);padding:4px 8px;cursor:pointer;}
-    footer{margin-top:22px;color:var(--muted);font-size:.84rem;}
+    footer{margin-top:22px;color:var(--muted);font-size:.84rem;line-height:1.5;}
     @media(max-width:860px){.path,.stage{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -52,12 +52,13 @@
     <header>
       <div class="mark">Ayalu<span>ngoo</span></div>
       <div>
+        <span class="chip on">Free</span>
         <button class="chip" id="kidBtn" type="button">Child voice</button>
         <button class="chip" id="grownBtn" type="button">Grown-up</button>
       </div>
     </header>
-    <h1>Learn how to swim.<br>For real.</h1>
-    <p class="lede" id="lede"></p>
+    <h1>Learn how to swim.<br>For real. Free.</h1>
+    <p class="lede" id="lede">This school is free. No paywall. No account to float. Amita teaches why the water holds you.</p>
     <div class="path" id="path"></div>
     <div class="extras">
       <button class="stone" data-room="safety" type="button"><small>Lesson zero</small>Safety</button>
@@ -77,7 +78,7 @@
         <form class="ask" id="form"><input id="q" autocomplete="off" placeholder="Ask Amita…" /><button class="go" type="submit">Speak</button></form>
       </section>
     </div>
-    <footer>Melody plays YouTube or Vimeo links. We do not copy the files. Ask a grown-up before a video. In the pool, watch the child, not the screen.</footer>
+    <footer>Ayalungoo is free. Float, safety, breath, and Amita are not behind a paywall. Melody plays YouTube or Vimeo links — we do not copy the files. Ask a grown-up before a video. In the pool, watch the child, not the screen.</footer>
   </div>
   <script src="/school.js"></script>
 </body>
