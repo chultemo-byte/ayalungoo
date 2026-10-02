@@ -1,0 +1,81 @@
+.stage {
+  background: #041014;
+  border: 1px solid rgba(201, 163, 106, .4);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.stage svg { width: 100%; height: auto; display: block; }
+.girl-pos { transform-box: view-box; transform-origin: 0 0; }
+.scene .sky { fill: #08323c; }
+.scene .water-fill { fill: #0e6272; }
+.scene[data-water="river"] .sky { fill: #102e28; }
+.scene[data-water="river"] .water-fill { fill: #1d6a52; }
+.scene[data-water="lake"] .sky { fill: #0c3340; }
+.scene[data-water="lake"] .water-fill { fill: #14748a; }
+.scene[data-water="ocean"] .sky { fill: #082433; }
+.scene[data-water="ocean"] .water-fill { fill: #0a5684; }
+.wave-line {
+  fill: none;
+  stroke: #d7ece8;
+  stroke-opacity: .55;
+  stroke-width: 2;
+  animation: wave-slide 5s linear infinite;
+}
+.wave-b { stroke-opacity: .28; animation-duration: 7s; }
+.scene[data-water="ocean"] .wave-line { stroke-width: 3; animation-duration: 3.2s; }
+.tag, .where-label, .rip text {
+  fill: #c9a36a;
+  font-family: Georgia, serif;
+  font-size: 16px;
+}
+.where-label { fill: #d7ece8; }
+.shore path { fill: #cbb892; }
+.wall rect { fill: #d7ece8; }
+.wall-deep { fill: #07161c; }
+.downstream path, .rip path { fill: #c9a36a; stroke: #c9a36a; stroke-width: 3; stroke-linecap: round; }
+.foam circle { fill: #f4efe4; opacity: .85; }
+.stick line { stroke: #cbb892; stroke-width: 5; stroke-linecap: round; }
+.ring circle { fill: none; stroke: #c9a36a; stroke-width: 4; }
+.friends circle { fill: #f4efe4; }
+.friends rect { fill: #9bb8b4; }
+.board-lie ellipse, .board-stand ellipse { fill: #f4efe4; }
+.board-core { fill: #e4d3ae; }
+.bubbles circle { fill: #f4efe4; }
+.hair ellipse, .hair path, .hair-cap { fill: #16343c; stroke: #16343c; }
+.hair path { fill: none; stroke-width: 6; stroke-linecap: round; }
+.skin { fill: #f4efe4; }
+.suit { fill: #c9a36a; }
+.eye { fill: #1a1208; }
+.smile { fill: none; stroke: #7a4e3a; stroke-width: 1.2; stroke-linecap: round; }
+.limb line, .knee line { stroke: #e7c99a; stroke-width: 7; stroke-linecap: round; }
+.hand, .foot { fill: #f4efe4; }
+.hair-cap { opacity: 0; }
+.scene.face-down .face { opacity: 0; }
+.scene.face-down .hair-cap { opacity: 1; }
+.shore, .wall, .downstream, .rip, .foam, .stick, .ring, .friends,
+.board-lie, .board-stand, .bubbles { display: none; }
+.show-shore .shore,
+.show-wall .wall,
+.show-downstream .downstream,
+.show-rip .rip,
+.show-foam .foam,
+.show-stick .stick,
+.show-ring .ring,
+.show-friends .friends,
+.show-board-lie .board-lie,
+.show-board-stand .board-stand,
+.show-bubbles .bubbles { display: block; }
+.b1 { animation: bubble-rise 1.8s ease-in infinite; }
+.b2 { animation: bubble-rise 2.1s ease-in infinite .4s; }
+.b3 { animation: bubble-rise 1.6s ease-in infinite .8s; }
+@keyframes wave-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-80px); }
+}
+@keyframes bubble-rise {
+  from { transform: translate(0, 6px); opacity: .95; }
+  to { transform: translate(3px, -26px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene, .scene * { animation: none !important; }
+}
