@@ -686,6 +686,20 @@
       legR: "rotate(12deg)",
       kneeL: "rotate(-78deg)",
       kneeR: "rotate(78deg)"
+    }),
+    hello: pose({
+      props: ["peace"],
+      bodyDur: "4.4s",
+      armDur: "2.8s",
+      legDur: "4.4s",
+      body: [
+        "translate(200px, 128px) rotate(0deg) scale(1.2)",
+        "translate(200px, 122px) rotate(0deg) scale(1.2)"
+      ],
+      armL: ["rotate(86deg)", "rotate(100deg)"],
+      armR: ["rotate(-52deg)", "rotate(-36deg)"],
+      legL: ["rotate(-6deg)", "rotate(6deg)"],
+      legR: ["rotate(6deg)", "rotate(-6deg)"]
     })
   };
 
@@ -722,15 +736,52 @@
     '<g class="board-stand"><ellipse cx="0" cy="48" rx="74" ry="13"></ellipse><ellipse class="board-core" cx="0" cy="48" rx="58" ry="7"></ellipse></g>' +
     '<g class="bubbles"><circle class="b1" cx="8" cy="-28" r="3.2"></circle><circle class="b2" cx="14" cy="-18" r="2.2"></circle><circle class="b3" cx="2" cy="-12" r="2.6"></circle></g>' +
     '<g class="girl">' +
-    '<g class="hair"><ellipse cx="0" cy="-40" rx="15" ry="16"></ellipse><path d="M11 -32 C 24 -20 20 -2 8 10"></path></g>' +
-    '<circle class="skin" cx="0" cy="-34" r="13"></circle>' +
-    '<g class="face"><circle class="eye" cx="-4.6" cy="-35" r="1.35"></circle><circle class="eye" cx="4.4" cy="-35" r="1.35"></circle><path class="smile" d="M-3.6 -28.2 Q 0 -25.6 3.6 -28.2"></path></g>' +
-    '<circle class="hair-cap" cx="0" cy="-34" r="13.2"></circle>' +
-    '<path class="suit" d="M-11 -20 L11 -20 L9 20 Q0 26 -9 20 Z"></path>' +
-    '<g transform="translate(-11,-16)"><g class="limb arm-l"><line x1="0" y1="0" x2="30" y2="0"></line><circle class="hand" cx="30" cy="0" r="3.3"></circle></g></g>' +
-    '<g transform="translate(11,-16)"><g class="limb arm-r"><line x1="0" y1="0" x2="30" y2="0"></line><circle class="hand" cx="30" cy="0" r="3.3"></circle></g></g>' +
-    '<g transform="translate(-5,18)"><g class="limb leg-l"><line x1="0" y1="0" x2="0" y2="16"></line><g transform="translate(0,16)"><g class="knee knee-l"><line x1="0" y1="0" x2="0" y2="16"></line><circle class="foot" cx="0" cy="16" r="3.3"></circle></g></g></g></g>' +
-    '<g transform="translate(5,18)"><g class="limb leg-r"><line x1="0" y1="0" x2="0" y2="16"></line><g transform="translate(0,16)"><g class="knee knee-r"><line x1="0" y1="0" x2="0" y2="16"></line><circle class="foot" cx="0" cy="16" r="3.3"></circle></g></g></g></g>' +
+    '<path class="hair-back" d="M0 -66 C-18 -66 -26 -56 -25 -42 C-24 -28 -20 -16 -14 -8 C-10 -3 -4 -5 0 -6 C4 -5 10 -3 14 -8 C20 -16 24 -28 25 -42 C26 -56 18 -66 0 -66 Z"></path>' +
+    '<path class="neck" d="M-5 -30 L5 -30 L4.2 -16 L-4.2 -16 Z"></path>' +
+    '<circle class="skin" cx="0" cy="-46" r="18"></circle>' +
+    '<path class="bangs" d="M-15 -61 C-10 -52 -5 -50 0 -50 C5 -50 10 -52 15 -61 C8 -56 0 -54.4 -15 -61 Z"></path>' +
+    '<g class="face">' +
+    '<path class="brow" d="M-10.4 -51.4 Q-6.6 -53.2 -3.2 -51.4"></path>' +
+    '<path class="brow" d="M3.2 -51.4 Q6.6 -53.2 10.4 -51.4"></path>' +
+    '<ellipse class="eye-soft" cx="-6.3" cy="-43.2" rx="4.15" ry="4.45"></ellipse>' +
+    '<ellipse class="eye-soft" cx="6.3" cy="-43.2" rx="4.15" ry="4.45"></ellipse>' +
+    '<circle class="eye" cx="-5.7" cy="-42.7" r="2.15"></circle>' +
+    '<circle class="eye" cx="6.9" cy="-42.7" r="2.15"></circle>' +
+    '<circle class="eye-shine" cx="-6.7" cy="-44" r="0.9"></circle>' +
+    '<circle class="eye-shine" cx="5.9" cy="-44" r="0.9"></circle>' +
+    '<ellipse class="blush" cx="-12.4" cy="-36.6" rx="2.9" ry="1.7"></ellipse>' +
+    '<ellipse class="blush" cx="12.4" cy="-36.6" rx="2.9" ry="1.7"></ellipse>' +
+    '<path class="smile" d="M-5 -33.6 Q0 -29.2 5 -33.6"></path>' +
+    '</g>' +
+    '<circle class="hair-cap" cx="0" cy="-46" r="18.4"></circle>' +
+    '<path class="suit" d="M-15 -20 C-16 -6 -13 10 -8 22 Q0 28 8 22 C13 10 16 -6 15 -20 Q8 -13 0 -12.2 Q-8 -13 -15 -20 Z"></path>' +
+    '<path class="suit-neck" d="M-7 -18.5 Q0 -13.2 7 -18.5"></path>' +
+    '<g transform="translate(-13,-16)"><g class="limb arm-l">' +
+    '<path class="limb-shape" d="M-10 -5.6 C6 -6.4 18 -5.2 27 -3.5 C30.2 -2.4 30.2 2.4 27 3.5 C18 5.2 6 6.4 -10 5.6 Z"></path>' +
+    '<g class="hand-plain" transform="translate(26,0)"><circle class="skin" r="5.6"></circle></g>' +
+    '</g></g>' +
+    '<g transform="translate(13,-16)"><g class="limb arm-r">' +
+    '<path class="limb-shape" d="M-10 -5.6 C6 -6.4 18 -5.2 27 -3.5 C30.2 -2.4 30.2 2.4 27 3.5 C18 5.2 6 6.4 -10 5.6 Z"></path>' +
+    '<g class="hand-plain" transform="translate(26,0)"><circle class="skin" r="5.6"></circle></g>' +
+    '<g class="hand-peace" transform="translate(26,0)">' +
+    '<circle class="skin" r="6"></circle>' +
+    '<ellipse class="skin" cx="0.6" cy="6.2" rx="2.3" ry="3.1" transform="rotate(32 0.6 6.2)"></ellipse>' +
+    '<g transform="rotate(-32)"><rect class="skin" x="4.2" y="-1.65" width="15.4" height="3.3" rx="1.65"></rect></g>' +
+    '<g transform="rotate(30)"><rect class="skin" x="4.2" y="-1.65" width="16" height="3.3" rx="1.65"></rect></g>' +
+    '</g>' +
+    '</g></g>' +
+    '<g transform="translate(-6,16)"><g class="limb leg-l">' +
+    '<path class="limb-shape" d="M-5.2 -8 C-6 4 -5.4 12 -4.4 17 L4.4 17 C5.4 12 6 4 5.2 -8 Z"></path>' +
+    '<g transform="translate(0,16)"><g class="knee knee-l">' +
+    '<path class="limb-shape" d="M-4.3 -2 C-4.8 6 -4.4 12 -3.5 16.2 L3.5 16.2 C4.4 12 4.8 6 4.3 -2 Z"></path>' +
+    '<ellipse class="foot" cx="1" cy="18" rx="6" ry="3.1"></ellipse>' +
+    '</g></g></g></g>' +
+    '<g transform="translate(6,16)"><g class="limb leg-r">' +
+    '<path class="limb-shape" d="M-5.2 -8 C-6 4 -5.4 12 -4.4 17 L4.4 17 C5.4 12 6 4 5.2 -8 Z"></path>' +
+    '<g transform="translate(0,16)"><g class="knee knee-r">' +
+    '<path class="limb-shape" d="M-4.3 -2 C-4.8 6 -4.4 12 -3.5 16.2 L3.5 16.2 C4.4 12 4.8 6 4.3 -2 Z"></path>' +
+    '<ellipse class="foot" cx="-1" cy="18" rx="6" ry="3.1"></ellipse>' +
+    '</g></g></g></g>' +
     '</g></g>' +
     '<text class="tag" x="16" y="28">Amita</text>' +
     '<text class="where-label" x="384" y="28" text-anchor="end"></text>' +
@@ -820,7 +871,8 @@
     node.appendChild(anim);
   }
 
-  root.mountAmita = function (el, move, label) {
+  root.mountAmita = function (el, move, label, options) {
+    options = options || {};
     var spec = root.AMITA_POSES[move] || root.AMITA_POSES.breath;
     el.innerHTML = SVG;
     var svg = el.querySelector("svg");
@@ -835,6 +887,7 @@
     svg.querySelector("title").textContent = label || "Amita shows the move";
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", label || "Amita shows the move");
+    if (options.portrait) svg.setAttribute("viewBox", "154 30 116 174");
 
     var id = move.replace(/[^a-z0-9-]/g, "");
     var pre = '.scene[data-move="' + id + '"] ';

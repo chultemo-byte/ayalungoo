@@ -73,8 +73,16 @@
     var count = doneCount(data);
     var last = byId(data.last) || LESSONS[0];
 
-    root.appendChild(el("p", "eyebrow", "Ayalungoo"));
-    root.appendChild(el("h1", null, "Amita Swimming"));
+    var teacher = el("div", "teacher");
+    var frame = el("div", "stage teacher-frame");
+    frame.id = "school-amita";
+    teacher.appendChild(frame);
+    var teacherCopy = el("div", "teacher-copy");
+    teacherCopy.appendChild(el("p", "eyebrow", "Ayalungoo"));
+    teacherCopy.appendChild(el("h1", null, "Amita Swimming"));
+    teacher.appendChild(teacherCopy);
+    root.appendChild(teacher);
+    if (window.mountAmita) window.mountAmita(frame, "hello", "Amita says hello", { portrait: true });
     root.appendChild(el("p", "purpose", "A free school where you learn to float, then dance with water."));
     root.appendChild(el("p", "note", "Amita is a drawing of a calm, kind, brave teacher. She shows each move. You try it with a grown-up."));
     root.appendChild(el("p", "note", "There are 48 lessons. You can open any one. A good start is the first one."));

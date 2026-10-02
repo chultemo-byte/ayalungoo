@@ -41,17 +41,26 @@
 .board-lie ellipse, .board-stand ellipse { fill: #f4efe4; }
 .board-core { fill: #e4d3ae; }
 .bubbles circle { fill: #f4efe4; }
-.hair ellipse, .hair path, .hair-cap { fill: #16343c; stroke: #16343c; }
-.hair path { fill: none; stroke-width: 6; stroke-linecap: round; }
-.skin { fill: #f4efe4; }
+.hair-back, .hair-lock, .bangs, .hair-cap { fill: #2a241f; }
+.bangs { fill: #231e1a; }
+.skin, .limb-shape, .neck { fill: #f6d7c3; }
 .suit { fill: #c9a36a; }
-.eye { fill: #1a1208; }
-.smile { fill: none; stroke: #7a4e3a; stroke-width: 1.2; stroke-linecap: round; }
-.limb line, .knee line { stroke: #e7c99a; stroke-width: 7; stroke-linecap: round; }
-.hand, .foot { fill: #f4efe4; }
-.hair-cap { opacity: 0; }
-.scene.face-down .face { opacity: 0; }
-.scene.face-down .hair-cap { opacity: 1; }
+.suit-neck { fill: none; stroke: #f4efe4; stroke-width: 1.3; stroke-linecap: round; }
+.eye-soft { fill: #fffaf6; }
+.eye { fill: #2a241f; }
+.eye-shine { fill: #fff; }
+.blush { fill: #e7a48a; opacity: .5; }
+.smile, .brow { fill: none; stroke: #8a5a48; stroke-linecap: round; }
+.smile { stroke-width: 1.7; }
+.brow { stroke-width: 1.2; }
+.foot { fill: #f3c9b0; }
+.finger { fill: none; stroke: #f6d7c3; stroke-width: 3.1; stroke-linecap: round; }
+.hair-cap, .hand-peace { display: none; }
+.show-peace .arm-r .hand-peace { display: block; }
+.show-peace .arm-r .hand-plain { display: none; }
+.scene.face-down .face { display: none; }
+.scene.face-down .hair-cap { display: block; }
+.scene.face-down .bangs { display: none; }
 .shore, .wall, .downstream, .rip, .foam, .stick, .ring, .friends,
 .board-lie, .board-stand, .bubbles { display: none; }
 .show-shore .shore,
