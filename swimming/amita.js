@@ -42,7 +42,7 @@
 
   root.AMITA_POSES = {
     breath: pose({
-      props: ["bubbles", "wall"],
+      props: ["bubbles"],
       bodyDur: "3.6s",
       body: [
         "translate(168px, 188px) rotate(16deg) scale(1.08)",
