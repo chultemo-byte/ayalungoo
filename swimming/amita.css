@@ -48,7 +48,7 @@
   background: linear-gradient(180deg, #e7f6ff 0%, #c5e8f8 100%);
 }
 .doll-stage.show-mouth .sea {
-  top: 31%;
+  top: 24%;
   background: linear-gradient(180deg, #2b94c9 0%, #1876b4 20%, #0e568c 100%);
 }
 .doll-stage.show-mouth .sea:before {
@@ -61,10 +61,10 @@
   background: rgba(255, 255, 255, .8);
 }
 .doll-stage[data-move="breath"] .bubbles {
-  left: 49%;
-  top: 4%;
-  width: 34px;
-  height: 62px;
+  left: 44%;
+  top: 1%;
+  width: 30px;
+  height: 44px;
 }
 .doll-stage[data-move="breath"] .bubbles:after {
   content: "";
