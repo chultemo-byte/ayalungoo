@@ -7,6 +7,8 @@
   <meta name="description" content="Free swimming school. Float first. Play your song. Amita is the teacher." />
   <meta name="theme-color" content="#07161c" />
   <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/swimming/amita.css" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <style>
     :root { --deep:#07161c; --foam:#d7ece8; --cream:#f4efe4; --gold:#c9a36a; --ink:#e8f2f0; --muted:#9bb8b4; }
     * { box-sizing: border-box; } html,body{margin:0;}
@@ -17,6 +19,14 @@
     .chip{border:1px solid rgba(201,163,106,.35);background:rgba(7,22,28,.5);color:var(--cream);padding:6px 10px;}
     h1{font-weight:500;font-size:clamp(1.8rem,5vw,3.1rem);line-height:1.08;margin:0 0 8px;}
     .lede,.note{color:var(--foam);line-height:1.5;max-width:40rem;}
+    .hero{margin:14px -16px 18px;background:#7ec8ea;}
+    .hero-banner{display:block;width:100%;height:auto;}
+    .door{display:flex;align-items:center;gap:12px;text-decoration:none;border:1px solid rgba(201,163,106,.55);background:rgba(201,163,106,.12);color:var(--cream);padding:12px;margin:0 0 18px;}
+    .door-amita{width:150px;flex:none;border-radius:16px;overflow:hidden;}
+    .door-copy{min-width:0;}
+    .door small{display:block;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;}
+    .door .purpose-line{display:block;color:var(--cream);font-size:1.35rem;line-height:1.25;margin:6px 0;}
+    .door #door-progress{display:block;color:var(--foam);font-size:1.05rem;}
     .melody{background:rgba(8,24,30,.72);border:1px solid rgba(201,163,106,.28);padding:14px;margin:16px 0;}
     .melody h2{margin:0 0 6px;font-weight:500;}
     .where{color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem;}
@@ -47,6 +57,19 @@
     </header>
     <h1>Learn how to swim.<br>For real. Free.</h1>
     <p class="lede">This school gives. Float first. Then dance. Then swim. Amita is the teacher.</p>
+
+    <section class="hero">
+      <img class="hero-banner" src="/swimming/hero-banner.jpg" alt="Let's swim &amp; surf with Amita. 48 swim and surf techniques.">
+    </section>
+
+    <a class="door" href="/swimming/">
+      <div class="stage door-amita" id="door-amita"></div>
+      <span class="door-copy">
+        <small>Amita Swimming</small>
+        <span class="purpose-line">A free school where you learn to float, then dance with water.</span>
+        <span id="door-progress">Tap to come in. 48 free lessons.</span>
+      </span>
+    </a>
 
     <section class="melody" id="melody">
       <div class="where">Melody · her song</div>
@@ -93,6 +116,7 @@
     </div>
     <footer>Ayalungoo is free. We do not copy the song — YouTube keeps it. Ask a grown-up before a video. A door of Khard Hridaya.</footer>
   </div>
+  <script src="/swimming/amita.js"></script>
   <script>
     function add(who, text){
       const d=document.createElement('div');
@@ -111,8 +135,26 @@
       if(/float|starfish/.test(v)) a='Starfish. Ears in. Eyes to the sky. Soft belly. You do not kick to stay up.';
       if(/safety|alone/.test(v)) a='Ask first. Grown-up close enough to touch you. Never alone.';
       if(/breath|bubble/.test(v)) a='Bubbles out. Air in. Never hold until.';
+      if(/school|lesson|amita swimming/.test(v)) a='Open Amita Swimming on this page. It is free. Start with bubbles, then float. A grown-up stays with you.';
       add('Amita',a);
     });
+    (function(){
+      if (window.mountAmita) {
+        window.mountAmita(document.getElementById('door-amita'), 'hello', 'Amita says hello', { portrait: true });
+      }
+      var line=document.getElementById('door-progress');
+      try{
+        var saved=JSON.parse(localStorage.getItem('ayalungoo-swimming')||'{}');
+        var n=0;
+        if(saved.done) Object.keys(saved.done).forEach(function(key){ if(saved.done[key]) n+=1; });
+        if(saved.lastTitle) line.textContent='Pick up where you stopped: '+saved.lastTitle+'. '+n+' of 48 saved on this phone.';
+      }catch(err){}
+      if('serviceWorker' in navigator){
+        window.addEventListener('load', function(){
+          navigator.serviceWorker.register('/sw.js').catch(function(){});
+        });
+      }
+    })();
   </script>
 </body>
 </html>

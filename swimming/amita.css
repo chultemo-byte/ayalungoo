@@ -1,0 +1,114 @@
+.stage {
+  background: #041014;
+  border: 1px solid rgba(201, 163, 106, .4);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.stage svg { width: 100%; height: auto; display: block; }
+.amita-picture { display: block; width: 100%; height: auto; }
+.door-amita.stage, .teacher-frame.stage {
+  display: block;
+  background: linear-gradient(180deg, #2ea0d0 0 40%, #f3e6cf 40% 100%);
+}
+#stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(180deg, #2ea0d0 0 46%, #f3e6cf 46% 100%);
+}
+#stage .amita-picture {
+  width: auto;
+  max-width: 100%;
+  max-height: 70vh;
+}
+.girl-pos { transform-box: view-box; transform-origin: 0 0; }
+.scene .sky { fill: #08323c; }
+.scene .water-fill { fill: #0e6272; }
+.scene[data-water="river"] .sky { fill: #102e28; }
+.scene[data-water="river"] .water-fill { fill: #1d6a52; }
+.scene[data-water="lake"] .sky { fill: #0c3340; }
+.scene[data-water="lake"] .water-fill { fill: #14748a; }
+.scene[data-water="ocean"] .sky { fill: #082433; }
+.scene[data-water="ocean"] .water-fill { fill: #0a5684; }
+.wave-line {
+  fill: none;
+  stroke: #d7ece8;
+  stroke-opacity: .55;
+  stroke-width: 2;
+  animation: wave-slide 5s linear infinite;
+}
+.wave-b { stroke-opacity: .28; animation-duration: 7s; }
+.scene[data-water="ocean"] .wave-line { stroke-width: 3; animation-duration: 3.2s; }
+.tag, .where-label, .rip text {
+  fill: #c9a36a;
+  font-family: Georgia, serif;
+  font-size: 16px;
+}
+.where-label { fill: #d7ece8; }
+.shore path { fill: #cbb892; }
+.wall rect { fill: #d7ece8; }
+.wall-deep { fill: #07161c; }
+.downstream path, .rip path { fill: #c9a36a; stroke: #c9a36a; stroke-width: 3; stroke-linecap: round; }
+.foam circle { fill: #f4efe4; opacity: .85; }
+.stick line { stroke: #cbb892; stroke-width: 5; stroke-linecap: round; }
+.ring circle { fill: none; stroke: #c9a36a; stroke-width: 4; }
+.friends circle { fill: #f4efe4; }
+.friends rect { fill: #9bb8b4; }
+.board-lie ellipse, .board-stand ellipse { fill: #f4efe4; }
+.board-core { fill: #e4d3ae; }
+.bubbles circle { fill: #f4efe4; }
+.hair-back, .curl, .curl-front, .hair-cap { fill: #1a120e; }
+.curl-lite { fill: #2e2016; }
+.skin, .limb-shape, .neck, .foot { fill: #e88c4e; }
+.suit, .sleeve, .shorts { fill: #c81016; }
+.piping, .cuff, .cross { fill: #fff8f4; }
+.hem { fill: none; stroke: #fff8f4; stroke-width: 1.7; stroke-linecap: round; }
+.suit-neck { fill: none; stroke: #fff8f4; stroke-width: 1.5; stroke-linecap: round; }
+.eye-soft { fill: #fffaf6; }
+.iris { fill: #5c3018; }
+.eye { fill: #1a100c; }
+.eye-shine { fill: #fff; }
+.blush { fill: #d46545; opacity: .42; }
+.smile, .brow, .nose { fill: none; stroke: #6a341c; stroke-linecap: round; }
+.smile { stroke-width: 1.45; }
+.brow { stroke-width: 1.15; }
+.nose { stroke-width: 1.1; }
+.lanyard { fill: none; stroke: #1a120e; stroke-width: 1.7; stroke-linecap: round; }
+.whistle-body { fill: #e10612; }
+.whistle-top { fill: #1a120e; }
+.whistle-slot { fill: #fff8f4; }
+.finger { fill: none; stroke: #e88c4e; stroke-width: 3.1; stroke-linecap: round; }
+.hair-cap, .hand-peace { display: none; }
+.show-peace .arm-r .hand-peace { display: block; }
+.show-peace .arm-r .hand-plain { display: none; }
+.scene.face-down .face,
+.scene.face-down .curl-front,
+.scene.face-down .front { display: none; }
+.scene.face-down .hair-cap { display: block; }
+.shore, .wall, .downstream, .rip, .foam, .stick, .ring, .friends,
+.board-lie, .board-stand, .bubbles { display: none; }
+.show-shore .shore,
+.show-wall .wall,
+.show-downstream .downstream,
+.show-rip .rip,
+.show-foam .foam,
+.show-stick .stick,
+.show-ring .ring,
+.show-friends .friends,
+.show-board-lie .board-lie,
+.show-board-stand .board-stand,
+.show-bubbles .bubbles { display: block; }
+.b1 { animation: bubble-rise 1.8s ease-in infinite; }
+.b2 { animation: bubble-rise 2.1s ease-in infinite .4s; }
+.b3 { animation: bubble-rise 1.6s ease-in infinite .8s; }
+@keyframes wave-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-80px); }
+}
+@keyframes bubble-rise {
+  from { transform: translate(0, 6px); opacity: .95; }
+  to { transform: translate(3px, -26px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene, .scene * { animation: none !important; }
+}
