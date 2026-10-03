@@ -21,11 +21,220 @@
   max-width: 100%;
   max-height: 70vh;
 }
-#stage.locked-stage {
+#stage.doll-stage {
   display: block;
   position: relative;
-  background: #1f7ec4;
+  height: 380px;
   overflow: hidden;
+  background: #9fd4f5;
+}
+.doll-stage .sea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46%;
+  bottom: 0;
+  background: #1c86c9;
+}
+.water-river { background: #d7ead4; }
+.water-river .sea { background: #1d6a52; top: 42%; }
+.water-lake { background: #d5eef5; }
+.water-lake .sea { background: #14748a; }
+.water-ocean { background: #b9dff5; }
+.water-ocean .sea { background: #0a5684; top: 40%; }
+.doll-stage.show-full .sea { top: 0; }
+.doll-stage.show-shallow .sea { top: 64%; }
+.doll-stage.show-mouth .sea { top: 34%; }
+.doll-stage .rig {
+  position: absolute;
+  width: 150px;
+  height: 360px;
+  left: 50%;
+  top: 50%;
+  margin-left: -75px;
+  margin-top: -180px;
+  z-index: 3;
+}
+.doll-stage .place-low { top: 64%; }
+.doll-stage .place-high { top: 36%; }
+.doll-stage .place-left { left: 34%; }
+.doll-stage .place-right { left: 70%; }
+.doll-stage .doll,
+.doll-stage .limb,
+.doll-stage .piece {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.doll-stage .arm.l { transform-origin: 26.4% 33.2%; z-index: 5; }
+.doll-stage .arm.r { transform-origin: 78.9% 31.3%; z-index: 5; }
+.doll-stage .limb.l { transform-origin: 33.6% 63.8%; z-index: 3; }
+.doll-stage .limb.r { transform-origin: 62% 63.8%; z-index: 3; }
+.doll-stage .calf.l { transform-origin: 28.8% 80.7%; }
+.doll-stage .calf.r { transform-origin: 68% 80.7%; }
+.doll-stage .body { z-index: 4; }
+.doll-stage .board {
+  position: absolute;
+  height: 18px;
+  border-radius: 20px;
+  background: linear-gradient(#fffaf2, #e4d3ae);
+  box-shadow: 0 4px 0 rgba(90, 60, 20, .18);
+  z-index: 1;
+}
+.doll-stage .board-sit { left: -78px; right: -78px; top: 61%; }
+.doll-stage .board-prone { left: -96px; right: -96px; top: 47%; height: 24px; }
+.doll-stage .board-knee { left: -64px; right: -64px; top: 74%; }
+.doll-stage .deck {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 34%;
+  background: #e6d3b8;
+  border-bottom: 8px solid #c9b08a;
+  z-index: 1;
+}
+.doll-stage .shore,
+.doll-stage .shore-right {
+  position: absolute;
+  bottom: 0;
+  top: 34%;
+  width: 32%;
+  background: #e4cf9e;
+  z-index: 1;
+}
+.doll-stage .shore { left: 0; border-radius: 0 70px 0 0; }
+.doll-stage .shore-right { right: 0; left: auto; border-radius: 70px 0 0 0; }
+.doll-stage .face-cover {
+  position: absolute;
+  left: 34%;
+  top: 9%;
+  width: 32%;
+  height: 15%;
+  border-radius: 50%;
+  background: rgba(12, 110, 170, .78);
+  z-index: 6;
+  opacity: 0;
+}
+.doll-stage.show-face .face-cover { opacity: 1; }
+.doll-stage .bubbles {
+  position: absolute;
+  left: 46%;
+  top: 16%;
+  width: 40px;
+  height: 54px;
+  z-index: 7;
+  pointer-events: none;
+}
+.doll-stage .bubbles i {
+  position: absolute;
+  bottom: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .95);
+  animation: locked-bubble-rise 1.7s ease-in infinite;
+}
+.doll-stage .bubbles i:nth-child(2) { left: 16px; width: 8px; height: 8px; animation-delay: .3s; }
+.doll-stage .bubbles i:nth-child(3) { left: 8px; width: 9px; height: 9px; animation-delay: .6s; }
+.doll-stage .wave {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  top: 38%;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .42);
+  z-index: 4;
+}
+.doll-stage .foam { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.doll-stage .foam i {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .8);
+}
+.doll-stage .foam i:nth-child(1) { left: 18%; top: 58%; }
+.doll-stage .foam i:nth-child(2) { left: 46%; top: 64%; width: 26px; }
+.doll-stage .foam i:nth-child(3) { right: 16%; top: 54%; }
+.doll-stage .arrows {
+  position: absolute;
+  right: 18px;
+  top: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+}
+.doll-stage .arrows i {
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 26px solid #fffaf2;
+}
+.doll-stage .friends { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.doll-stage .friends i {
+  position: absolute;
+  top: 42%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f4efe4;
+  box-shadow: 0 28px 0 -10px #9bb8b4;
+}
+.doll-stage .friends i:first-child { left: 8%; }
+.doll-stage .friends i:last-child { right: 8%; }
+.doll-stage .stick {
+  position: absolute;
+  left: 16%;
+  top: 42%;
+  width: 42%;
+  height: 7px;
+  border-radius: 7px;
+  background: #c9a36a;
+  transform: rotate(16deg);
+  z-index: 4;
+}
+.doll-stage .ring {
+  position: absolute;
+  left: 10%;
+  top: 58%;
+  width: 34px;
+  height: 34px;
+  border: 5px solid #f4efe4;
+  border-radius: 50%;
+  z-index: 2;
+}
+.doll-stage .mark {
+  position: absolute;
+  right: 8%;
+  top: 18%;
+  width: 8px;
+  height: 42px;
+  background: #c9a36a;
+  z-index: 2;
+}
+.doll-stage .mark:before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid #fffaf2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .doll-stage .rig,
+  .doll-stage .doll,
+  .doll-stage .limb,
+  .doll-stage .piece,
+  .doll-stage .board,
+  .doll-stage .face-cover,
+  .doll-stage .bubbles,
+  .doll-stage .bubbles i { animation: none !important; }
 }
 .locked-move { position: relative; width: 100%; }
 .locked-amita { display: block; width: 100%; height: auto; }
