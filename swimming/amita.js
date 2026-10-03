@@ -736,51 +736,104 @@
     '<g class="board-stand"><ellipse cx="0" cy="48" rx="74" ry="13"></ellipse><ellipse class="board-core" cx="0" cy="48" rx="58" ry="7"></ellipse></g>' +
     '<g class="bubbles"><circle class="b1" cx="8" cy="-28" r="3.2"></circle><circle class="b2" cx="14" cy="-18" r="2.2"></circle><circle class="b3" cx="2" cy="-12" r="2.6"></circle></g>' +
     '<g class="girl">' +
-    '<path class="hair-back" d="M0 -66 C-18 -66 -26 -56 -25 -42 C-24 -28 -20 -16 -14 -8 C-10 -3 -4 -5 0 -6 C4 -5 10 -3 14 -8 C20 -16 24 -28 25 -42 C26 -56 18 -66 0 -66 Z"></path>' +
-    '<path class="neck" d="M-5 -30 L5 -30 L4.2 -16 L-4.2 -16 Z"></path>' +
-    '<circle class="skin" cx="0" cy="-46" r="18"></circle>' +
-    '<path class="bangs" d="M-15 -61 C-10 -52 -5 -50 0 -50 C5 -50 10 -52 15 -61 C8 -56 0 -54.4 -15 -61 Z"></path>' +
-    '<g class="face">' +
-    '<path class="brow" d="M-10.4 -51.4 Q-6.6 -53.2 -3.2 -51.4"></path>' +
-    '<path class="brow" d="M3.2 -51.4 Q6.6 -53.2 10.4 -51.4"></path>' +
-    '<ellipse class="eye-soft" cx="-6.3" cy="-43.2" rx="4.15" ry="4.45"></ellipse>' +
-    '<ellipse class="eye-soft" cx="6.3" cy="-43.2" rx="4.15" ry="4.45"></ellipse>' +
-    '<circle class="eye" cx="-5.7" cy="-42.7" r="2.15"></circle>' +
-    '<circle class="eye" cx="6.9" cy="-42.7" r="2.15"></circle>' +
-    '<circle class="eye-shine" cx="-6.7" cy="-44" r="0.9"></circle>' +
-    '<circle class="eye-shine" cx="5.9" cy="-44" r="0.9"></circle>' +
-    '<ellipse class="blush" cx="-12.4" cy="-36.6" rx="2.9" ry="1.7"></ellipse>' +
-    '<ellipse class="blush" cx="12.4" cy="-36.6" rx="2.9" ry="1.7"></ellipse>' +
-    '<path class="smile" d="M-5 -33.6 Q0 -29.2 5 -33.6"></path>' +
+    '<g class="hair-back">' +
+    '<path class="curl" d="M0 -80 C-20 -80 -34 -66 -33 -50 C-32 -36 -26 -24 -16 -18 C-8 -14 8 -14 16 -18 C26 -24 32 -36 33 -50 C34 -66 20 -80 0 -80 Z"></path>' +
+    '<circle class="curl" cx="0" cy="-78" r="6.6"></circle>' +
+    '<circle class="curl" cx="-12" cy="-74" r="6.4"></circle>' +
+    '<circle class="curl" cx="12" cy="-75" r="6.5"></circle>' +
+    '<circle class="curl" cx="-22" cy="-64" r="6.4"></circle>' +
+    '<circle class="curl" cx="22" cy="-65" r="6.3"></circle>' +
+    '<circle class="curl" cx="-28" cy="-52" r="6.2"></circle>' +
+    '<circle class="curl" cx="28" cy="-52" r="6.2"></circle>' +
+    '<circle class="curl" cx="-30" cy="-40" r="5.8"></circle>' +
+    '<circle class="curl" cx="30" cy="-40" r="5.8"></circle>' +
+    '<circle class="curl" cx="-24" cy="-28" r="5.6"></circle>' +
+    '<circle class="curl" cx="24" cy="-28" r="5.6"></circle>' +
+    '<circle class="curl" cx="-14" cy="-22" r="5.2"></circle>' +
+    '<circle class="curl" cx="14" cy="-22" r="5.2"></circle>' +
+    '<circle class="curl-lite" cx="-6" cy="-68" r="4"></circle>' +
+    '<circle class="curl-lite" cx="8" cy="-62" r="3.6"></circle>' +
+    '<circle class="curl-lite" cx="-18" cy="-46" r="3.4"></circle>' +
     '</g>' +
-    '<circle class="hair-cap" cx="0" cy="-46" r="18.4"></circle>' +
-    '<path class="suit" d="M-15 -20 C-16 -6 -13 10 -8 22 Q0 28 8 22 C13 10 16 -6 15 -20 Q8 -13 0 -12.2 Q-8 -13 -15 -20 Z"></path>' +
-    '<path class="suit-neck" d="M-7 -18.5 Q0 -13.2 7 -18.5"></path>' +
+    '<path class="neck" d="M-4.6 -34 L4.6 -34 L3.8 -18 L-3.8 -18 Z"></path>' +
+    '<circle class="skin" cx="0" cy="-48" r="16.5"></circle>' +
+    '<g class="curl-front">' +
+    '<circle class="curl" cx="-11" cy="-60" r="5.2"></circle>' +
+    '<circle class="curl" cx="1" cy="-63" r="4.8"></circle>' +
+    '<circle class="curl" cx="12" cy="-60" r="5"></circle>' +
+    '<circle class="curl" cx="-17" cy="-52" r="4.4"></circle>' +
+    '<circle class="curl" cx="17" cy="-52" r="4.4"></circle>' +
+    '</g>' +
+    '<g class="face">' +
+    '<path class="brow" d="M-10.2 -55.2 Q-6.4 -57 -2.8 -55.2"></path>' +
+    '<path class="brow" d="M2.8 -55.2 Q6.4 -57 10.2 -55.2"></path>' +
+    '<ellipse class="eye-soft" cx="-6.2" cy="-47.2" rx="4.9" ry="5.5"></ellipse>' +
+    '<ellipse class="eye-soft" cx="6.2" cy="-47.2" rx="4.9" ry="5.5"></ellipse>' +
+    '<circle class="iris" cx="-6" cy="-46.8" r="3.45"></circle>' +
+    '<circle class="iris" cx="6.4" cy="-46.8" r="3.45"></circle>' +
+    '<circle class="eye" cx="-5.8" cy="-46.5" r="1.7"></circle>' +
+    '<circle class="eye" cx="6.6" cy="-46.5" r="1.7"></circle>' +
+    '<circle class="eye-shine" cx="-7.2" cy="-48.2" r="1.15"></circle>' +
+    '<circle class="eye-shine" cx="5.2" cy="-48.2" r="1.15"></circle>' +
+    '<ellipse class="blush" cx="-11.6" cy="-40.2" rx="2.8" ry="1.6"></ellipse>' +
+    '<ellipse class="blush" cx="11.6" cy="-40.2" rx="2.8" ry="1.6"></ellipse>' +
+    '<path class="nose" d="M-0.7 -41.4 Q0.2 -40.2 1 -41.2"></path>' +
+    '<path class="smile" d="M-3.3 -36.6 Q0 -34.8 3.3 -36.6"></path>' +
+    '</g>' +
+    '<g class="hair-cap">' +
+    '<circle cx="0" cy="-48" r="17"></circle>' +
+    '<circle cx="-8" cy="-60" r="6"></circle>' +
+    '<circle cx="9" cy="-61" r="6"></circle>' +
+    '<circle cx="0" cy="-66" r="5.4"></circle>' +
+    '<circle cx="-16" cy="-48" r="5.5"></circle>' +
+    '<circle cx="16" cy="-48" r="5.5"></circle>' +
+    '</g>' +
+    '<path class="suit" d="M-13.5 -20 C-15.5 -6 -13 10 -9 20 Q-5 27 0 28 Q5 27 9 20 C13 10 15.5 -6 13.5 -20 Q7 -12.6 0 -11.8 Q-7 -12.6 -13.5 -20 Z"></path>' +
+    '<path class="suit-neck" d="M-7.4 -18.4 Q0 -13 7.4 -18.4"></path>' +
+    '<g class="front">' +
+    '<rect class="cross" x="1.2" y="-13.4" width="9.6" height="3.1" rx="0.6"></rect>' +
+    '<rect class="cross" x="4.45" y="-16.6" width="3.1" height="9.6" rx="0.6"></rect>' +
+    '<path class="lanyard" d="M-5.2 -17 Q-2 -6 0 2"></path>' +
+    '<path class="lanyard" d="M5.6 -16.4 Q2.2 -6 0 2"></path>' +
+    '<g transform="translate(0,2.2)">' +
+    '<rect class="whistle-top" x="-1.8" y="-2.1" width="3.6" height="2.4" rx="0.7"></rect>' +
+    '<rect class="whistle-body" x="-3" y="0" width="6" height="7.6" rx="1.6"></rect>' +
+    '<rect class="whistle-slot" x="-1.6" y="1.6" width="3.2" height="1.35" rx="0.35"></rect>' +
+    '</g>' +
+    '</g>' +
     '<g transform="translate(-13,-16)"><g class="limb arm-l">' +
-    '<path class="limb-shape" d="M-10 -5.6 C6 -6.4 18 -5.2 27 -3.5 C30.2 -2.4 30.2 2.4 27 3.5 C18 5.2 6 6.4 -10 5.6 Z"></path>' +
-    '<g class="hand-plain" transform="translate(26,0)"><circle class="skin" r="5.6"></circle></g>' +
+    '<path class="sleeve" d="M-9 -6.2 C2 -7 11 -5.6 14 -4.2 C15.4 -3.2 15.4 3.2 14 4.2 C11 5.6 2 7 -9 6.2 Z"></path>' +
+    '<ellipse class="cuff" cx="13.4" cy="0" rx="1.55" ry="5"></ellipse>' +
+    '<path class="limb-shape" d="M11 -4.3 C17 -4.8 23 -3.6 28 -2.6 C30.6 -1.8 30.6 1.8 28 2.6 C23 3.6 17 4.8 11 4.3 Z"></path>' +
+    '<g class="hand-plain" transform="translate(27,0)"><circle class="skin" r="5.4"></circle></g>' +
     '</g></g>' +
     '<g transform="translate(13,-16)"><g class="limb arm-r">' +
-    '<path class="limb-shape" d="M-10 -5.6 C6 -6.4 18 -5.2 27 -3.5 C30.2 -2.4 30.2 2.4 27 3.5 C18 5.2 6 6.4 -10 5.6 Z"></path>' +
-    '<g class="hand-plain" transform="translate(26,0)"><circle class="skin" r="5.6"></circle></g>' +
-    '<g class="hand-peace" transform="translate(26,0)">' +
-    '<circle class="skin" r="6"></circle>' +
-    '<ellipse class="skin" cx="0.6" cy="6.2" rx="2.3" ry="3.1" transform="rotate(32 0.6 6.2)"></ellipse>' +
-    '<g transform="rotate(-32)"><rect class="skin" x="4.2" y="-1.65" width="15.4" height="3.3" rx="1.65"></rect></g>' +
-    '<g transform="rotate(30)"><rect class="skin" x="4.2" y="-1.65" width="16" height="3.3" rx="1.65"></rect></g>' +
+    '<path class="sleeve" d="M-9 -6.2 C2 -7 11 -5.6 14 -4.2 C15.4 -3.2 15.4 3.2 14 4.2 C11 5.6 2 7 -9 6.2 Z"></path>' +
+    '<ellipse class="cuff" cx="13.4" cy="0" rx="1.55" ry="5"></ellipse>' +
+    '<path class="limb-shape" d="M11 -4.3 C17 -4.8 23 -3.6 28 -2.6 C30.6 -1.8 30.6 1.8 28 2.6 C23 3.6 17 4.8 11 4.3 Z"></path>' +
+    '<g class="hand-plain" transform="translate(27,0)"><circle class="skin" r="5.4"></circle></g>' +
+    '<g class="hand-peace" transform="translate(27,0)">' +
+    '<circle class="skin" r="5.6"></circle>' +
+    '<ellipse class="skin" cx="0.4" cy="5.6" rx="2.1" ry="2.8" transform="rotate(32 0.4 5.6)"></ellipse>' +
+    '<g transform="rotate(-32)"><rect class="skin" x="3.6" y="-1.55" width="14.2" height="3.1" rx="1.55"></rect></g>' +
+    '<g transform="rotate(28)"><rect class="skin" x="3.6" y="-1.55" width="14.8" height="3.1" rx="1.55"></rect></g>' +
     '</g>' +
     '</g></g>' +
     '<g transform="translate(-6,16)"><g class="limb leg-l">' +
-    '<path class="limb-shape" d="M-5.2 -8 C-6 4 -5.4 12 -4.4 17 L4.4 17 C5.4 12 6 4 5.2 -8 Z"></path>' +
+    '<path class="limb-shape" d="M-5 -6 C-5.8 6 -5.2 13 -4.2 17 L4.2 17 C5.2 13 5.8 6 5 -6 Z"></path>' +
+    '<path class="shorts" d="M-5.5 -8 C-6.3 0 -5.6 4.6 -4.8 6 L4.8 6 C5.6 4.6 6.3 0 5.5 -8 Z"></path>' +
+    '<path class="hem" d="M-5 5.4 L5 5.4"></path>' +
     '<g transform="translate(0,16)"><g class="knee knee-l">' +
-    '<path class="limb-shape" d="M-4.3 -2 C-4.8 6 -4.4 12 -3.5 16.2 L3.5 16.2 C4.4 12 4.8 6 4.3 -2 Z"></path>' +
-    '<ellipse class="foot" cx="1" cy="18" rx="6" ry="3.1"></ellipse>' +
+    '<path class="limb-shape" d="M-4.2 -2 C-4.7 6 -4.3 12 -3.4 16 L3.4 16 C4.3 12 4.7 6 4.2 -2 Z"></path>' +
+    '<ellipse class="foot" cx="1.1" cy="17.6" rx="6.2" ry="3.1"></ellipse>' +
     '</g></g></g></g>' +
     '<g transform="translate(6,16)"><g class="limb leg-r">' +
-    '<path class="limb-shape" d="M-5.2 -8 C-6 4 -5.4 12 -4.4 17 L4.4 17 C5.4 12 6 4 5.2 -8 Z"></path>' +
+    '<path class="limb-shape" d="M-5 -6 C-5.8 6 -5.2 13 -4.2 17 L4.2 17 C5.2 13 5.8 6 5 -6 Z"></path>' +
+    '<path class="shorts" d="M-5.5 -8 C-6.3 0 -5.6 4.6 -4.8 6 L4.8 6 C5.6 4.6 6.3 0 5.5 -8 Z"></path>' +
+    '<path class="hem" d="M-5 5.4 L5 5.4"></path>' +
     '<g transform="translate(0,16)"><g class="knee knee-r">' +
-    '<path class="limb-shape" d="M-4.3 -2 C-4.8 6 -4.4 12 -3.5 16.2 L3.5 16.2 C4.4 12 4.8 6 4.3 -2 Z"></path>' +
-    '<ellipse class="foot" cx="-1" cy="18" rx="6" ry="3.1"></ellipse>' +
+    '<path class="limb-shape" d="M-4.2 -2 C-4.7 6 -4.3 12 -3.4 16 L3.4 16 C4.3 12 4.7 6 4.2 -2 Z"></path>' +
+    '<ellipse class="foot" cx="-1.1" cy="17.6" rx="6.2" ry="3.1"></ellipse>' +
     '</g></g></g></g>' +
     '</g></g>' +
     '<text class="tag" x="16" y="28">Amita</text>' +
@@ -887,7 +940,7 @@
     svg.querySelector("title").textContent = label || "Amita shows the move";
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", label || "Amita shows the move");
-    if (options.portrait) svg.setAttribute("viewBox", "154 30 116 174");
+    if (options.portrait) svg.setAttribute("viewBox", "142 16 132 188");
 
     var id = move.replace(/[^a-z0-9-]/g, "");
     var pre = '.scene[data-move="' + id + '"] ';

@@ -41,26 +41,34 @@
 .board-lie ellipse, .board-stand ellipse { fill: #f4efe4; }
 .board-core { fill: #e4d3ae; }
 .bubbles circle { fill: #f4efe4; }
-.hair-back, .hair-lock, .bangs, .hair-cap { fill: #2a241f; }
-.bangs { fill: #231e1a; }
-.skin, .limb-shape, .neck { fill: #f6d7c3; }
-.suit { fill: #c9a36a; }
-.suit-neck { fill: none; stroke: #f4efe4; stroke-width: 1.3; stroke-linecap: round; }
+.hair-back, .curl, .curl-front, .hair-cap { fill: #1a120e; }
+.curl-lite { fill: #2e2016; }
+.skin, .limb-shape, .neck, .foot { fill: #e88c4e; }
+.suit, .sleeve, .shorts { fill: #c81016; }
+.piping, .cuff, .cross { fill: #fff8f4; }
+.hem { fill: none; stroke: #fff8f4; stroke-width: 1.7; stroke-linecap: round; }
+.suit-neck { fill: none; stroke: #fff8f4; stroke-width: 1.5; stroke-linecap: round; }
 .eye-soft { fill: #fffaf6; }
-.eye { fill: #2a241f; }
+.iris { fill: #5c3018; }
+.eye { fill: #1a100c; }
 .eye-shine { fill: #fff; }
-.blush { fill: #e7a48a; opacity: .5; }
-.smile, .brow { fill: none; stroke: #8a5a48; stroke-linecap: round; }
-.smile { stroke-width: 1.7; }
-.brow { stroke-width: 1.2; }
-.foot { fill: #f3c9b0; }
-.finger { fill: none; stroke: #f6d7c3; stroke-width: 3.1; stroke-linecap: round; }
+.blush { fill: #d46545; opacity: .42; }
+.smile, .brow, .nose { fill: none; stroke: #6a341c; stroke-linecap: round; }
+.smile { stroke-width: 1.45; }
+.brow { stroke-width: 1.15; }
+.nose { stroke-width: 1.1; }
+.lanyard { fill: none; stroke: #1a120e; stroke-width: 1.7; stroke-linecap: round; }
+.whistle-body { fill: #e10612; }
+.whistle-top { fill: #1a120e; }
+.whistle-slot { fill: #fff8f4; }
+.finger { fill: none; stroke: #e88c4e; stroke-width: 3.1; stroke-linecap: round; }
 .hair-cap, .hand-peace { display: none; }
 .show-peace .arm-r .hand-peace { display: block; }
 .show-peace .arm-r .hand-plain { display: none; }
-.scene.face-down .face { display: none; }
+.scene.face-down .face,
+.scene.face-down .curl-front,
+.scene.face-down .front { display: none; }
 .scene.face-down .hair-cap { display: block; }
-.scene.face-down .bangs { display: none; }
 .shore, .wall, .downstream, .rip, .foam, .stick, .ring, .friends,
 .board-lie, .board-stand, .bubbles { display: none; }
 .show-shore .shore,
