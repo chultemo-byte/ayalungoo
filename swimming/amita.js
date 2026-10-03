@@ -912,10 +912,12 @@
     node.appendChild(anim);
   }
 
+  var LOCKED_SRC = "/swimming/amita-locked.jpg";
+
   function showPortrait(el, label) {
     var img = document.createElement("img");
     img.className = "amita-picture";
-    img.src = "/swimming/amita.png";
+    img.src = LOCKED_SRC;
     img.alt = label || "Amita";
     el.appendChild(img);
   }
@@ -978,16 +980,13 @@
 
   root.mountAmita = function (el, move, label, options) {
     el.textContent = "";
+    el.classList.remove("locked-stage");
     options = options || {};
     if (options.portrait) {
       showPortrait(el, label);
       return;
     }
-    var pose = root.AMITA_POSES[move];
-    if (!pose) {
-      showPortrait(el, label);
-      return;
-    }
-    mountMove(el, pose, label);
+    if (root.mountDoll && root.mountDoll(el, move, label)) return;
+    showPortrait(el, label);
   };
 })(typeof window === "undefined" ? globalThis : window);
