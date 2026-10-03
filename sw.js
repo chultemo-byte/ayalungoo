@@ -1,4 +1,4 @@
-var CACHE = "ayalungoo-school-4";
+var CACHE = "ayalungoo-school-5";
 var ASSETS = [
   "/",
   "/index.html",
