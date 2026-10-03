@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Melody — Ayalungoo</title>
   <style>
     :root { --gold:#c9a36a; --foam:#d7ece8; --cream:#f4efe4; --muted:#9bb8b4; }
@@ -13,8 +14,9 @@
     h1 { font-weight:500; font-size:1.8rem; margin:10px 0 8px; }
     p { color:var(--foam); line-height:1.5; }
     .safe { color:var(--muted); font-size:.9rem; }
-    .frame { position:relative; padding-top:56.25%; background:#041014; margin:14px 0; border:1px solid rgba(201,163,106,.35); }
-    .frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .frame { position:relative; padding-top:56.25%; background:#102028; margin:14px 0; border:1px solid rgba(201,163,106,.35); overflow:hidden; }
+    .frame .yt-thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; background:transparent; }
     .row { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0; }
     input { flex:1; min-width:180px; background:#061318; border:1px solid rgba(215,236,232,.2); color:var(--cream); padding:8px 10px; }
     button { background:rgba(7,22,28,.6); color:var(--cream); border:1px solid rgba(201,163,106,.35); padding:8px 10px; cursor:pointer; font:inherit; }
@@ -30,7 +32,8 @@
     <h1>Melody</h1>
     <p>Her song lives here. Play on land. Then put the phone down. Starfish in the water — a grown-up close enough to touch you.</p>
     <div class="frame">
-      <iframe id="player" title="like JENNIE — official live" src="https://www.youtube-nocookie.com/embed/XD00TJ-6WSw" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/XD00TJ-6WSw/hqdefault.jpg" alt="like JENNIE, official live on YouTube">
+      <iframe id="player" title="like JENNIE — official live" src="https://www.youtube-nocookie.com/embed/XD00TJ-6WSw?rel=0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
     <p id="now">Now playing: like JENNIE — JENNIE (official live)</p>
     <p class="safe">YouTube keeps the file. We only show the official page. No autoplay. Ask a grown-up before a new video.</p>

@@ -1,9 +1,11 @@
 (function (root) {
   var PART = "/swimming/parts/";
 
-  function frames(values, wrap) {
+  function frames(values, wrap, at) {
     var stops;
-    if (values.length === 2) stops = [["0%,100%", values[0]], ["50%", values[1]]];
+    if (at && at.length === values.length) {
+      stops = values.map(function (value, i) { return [at[i], value]; });
+    } else if (values.length === 2) stops = [["0%,100%", values[0]], ["50%", values[1]]];
     else if (values.length === 3) stops = [["0%", values[0]], ["46%", values[1]], ["100%", values[2]]];
     else stops = [["0%", values[0]], ["28%", values[1]], ["58%", values[2]], ["100%", values[3]]];
     return stops.map(function (pair) {
@@ -15,9 +17,16 @@
 
   var SCENES = {
     breath: {
-      water: "pool", dur: "3.6s", place: "place-low", flags: ["bubbles", "mouth"], hold: 1,
-      doll: ["rotate(8deg) translateY(8px)", "rotate(24deg) translateY(58px)", "rotate(-8deg) translateY(-12px)"],
-      bubbles: [0.15, 1, 0]
+      water: "pool", dur: "5.2s", place: "place-low", flags: ["bubbles", "mouth"], hold: 1,
+      doll: [
+        "translateY(0px)",
+        "translateY(4px)",
+        "translateY(4px)",
+        "translateY(-58px)"
+      ],
+      dollAt: ["0%", "14%", "68%", "100%"],
+      bubbles: [0, 1, 1, 0],
+      bubAt: ["0%", "14%", "74%", "88%"]
     },
     "float-back": {
       water: "pool", dur: "4.4s", flags: ["full"],
@@ -392,26 +401,26 @@
     }
 
     var css = "";
-    function bind(node, key, values, wrap) {
+    function bind(node, key, values, wrap, at) {
       if (!node || !values || !values.length) return;
       var shown = values[Math.min(hold, values.length - 1)];
       node.style.transform = wrap(shown).replace("transform:", "");
       if (values.length < 2) return;
       var name = id + "-" + key;
-      css += "@keyframes " + name + "{" + frames(values, wrap) + "}";
+      css += "@keyframes " + name + "{" + frames(values, wrap, at) + "}";
       node.style.animation = name + " " + dur + " ease-in-out infinite";
     }
-    function fade(node, key, values) {
+    function fade(node, key, values, at) {
       if (!node || !values || !values.length) return;
       node.style.opacity = String(values[Math.min(hold, values.length - 1)]);
       if (values.length < 2) return;
       var name = id + "-" + key;
-      css += "@keyframes " + name + "{" + frames(values, function (n) { return "opacity:" + n; }) + "}";
+      css += "@keyframes " + name + "{" + frames(values, function (n) { return "opacity:" + n; }, at) + "}";
       node.style.animation = name + " " + dur + " ease-in-out infinite";
     }
 
     bind(rig, "rig", scene.rig, function (v) { return "transform:" + v; });
-    bind(doll, "doll", scene.doll, function (v) { return "transform:" + v; });
+    bind(doll, "doll", scene.doll, function (v) { return "transform:" + v; }, scene.dollAt);
     bind(board, "board", scene.boardMove, function (v) { return "transform:" + v; });
     bind(armL, "al", scene.armL, turn);
     bind(armR, "ar", scene.armR, turn);
@@ -420,7 +429,7 @@
     bind(calfL, "cl", scene.calfL, turn);
     bind(calfR, "cr", scene.calfR, turn);
     fade(face, "face", scene.faceOp);
-    fade(bubbles, "bub", scene.bubbles);
+    fade(bubbles, "bub", scene.bubbles, scene.bubAt);
 
     if (css) {
       var style = document.createElement("style");
