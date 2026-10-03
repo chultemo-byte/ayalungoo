@@ -6,6 +6,7 @@
   <title>Ayalungoo — free living school</title>
   <meta name="description" content="Free swimming school. Mouth under. Bubbles. Then float. Amita is the teacher." />
   <meta name="theme-color" content="#07161c" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <link rel="manifest" href="/manifest.json" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <style>
@@ -31,8 +32,9 @@
     .stone{border:1px solid rgba(201,163,106,.28);background:rgba(7,22,28,.45);color:var(--cream);padding:10px 12px;text-decoration:none;}
     .stone small{font-size:.62rem;}
     .melody{background:rgba(8,24,30,.72);}
-    .frame{position:relative;padding-top:56.25%;background:#041014;margin:10px 0;}
-    .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .frame{position:relative;padding-top:56.25%;background:#102028;margin:10px 0;overflow:hidden;}
+    .frame .yt-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;}
     footer{margin-top:22px;color:var(--muted);font-size:.84rem;line-height:1.5;}
   </style>
 </head>
@@ -82,6 +84,7 @@
       <h2>like JENNIE</h2>
       <p class="note">Play on land. Hum. Soft belly. Then put the phone down. In the water, a grown-up watches you — not the screen.</p>
       <div class="frame">
+        <img class="yt-thumb" src="https://i.ytimg.com/vi/XD00TJ-6WSw/hqdefault.jpg" alt="like JENNIE, official live on YouTube">
         <iframe src="https://www.youtube-nocookie.com/embed/XD00TJ-6WSw?rel=0" title="like JENNIE — official live, on Ayalungoo Melody" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
     </section>
