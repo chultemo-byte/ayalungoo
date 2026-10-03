@@ -22,7 +22,7 @@ h2 { font-weight: 500; font-size: 1.55rem; line-height: 1.2; margin: 22px 0 8px;
 p { margin: 0 0 12px; }
 .back { font-size: 1.05rem; }
 .teacher { display: flex; gap: 14px; align-items: center; margin-bottom: 8px; }
-.teacher-frame { width: 124px; flex: none; border-radius: 16px; overflow: hidden; }
+.teacher-frame { width: 150px; flex: none; border-radius: 16px; overflow: hidden; }
 .teacher-copy { min-width: 0; }
 .teacher-copy h1 { margin: 0 0 6px; }
 .purpose { color: var(--cream); font-size: 1.25rem; }

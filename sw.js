@@ -1,4 +1,4 @@
-var CACHE = "ayalungoo-school-3";
+var CACHE = "ayalungoo-school-4";
 var ASSETS = [
   "/",
   "/index.html",
@@ -15,6 +15,8 @@ var ASSETS = [
   "/swimming/school.css",
   "/swimming/amita.css",
   "/swimming/amita.js",
+  "/swimming/amita.png",
+  "/swimming/hero-banner.jpg",
   "/swimming/app.js"
 ];
 

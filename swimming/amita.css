@@ -5,6 +5,22 @@
   overflow: hidden;
 }
 .stage svg { width: 100%; height: auto; display: block; }
+.amita-picture { display: block; width: 100%; height: auto; }
+.door-amita.stage, .teacher-frame.stage {
+  display: block;
+  background: linear-gradient(180deg, #2ea0d0 0 40%, #f3e6cf 40% 100%);
+}
+#stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(180deg, #2ea0d0 0 46%, #f3e6cf 46% 100%);
+}
+#stage .amita-picture {
+  width: auto;
+  max-width: 100%;
+  max-height: 70vh;
+}
 .girl-pos { transform-box: view-box; transform-origin: 0 0; }
 .scene .sky { fill: #08323c; }
 .scene .water-fill { fill: #0e6272; }

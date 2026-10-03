@@ -924,47 +924,12 @@
     node.appendChild(anim);
   }
 
-  root.mountAmita = function (el, move, label, options) {
-    options = options || {};
-    var spec = root.AMITA_POSES[move] || root.AMITA_POSES.breath;
-    el.innerHTML = SVG;
-    var svg = el.querySelector("svg");
-    svg.setAttribute("data-move", move);
-    svg.setAttribute("data-water", spec.water);
-    if (spec.face === "down") svg.classList.add("face-down");
-    (spec.props || []).forEach(function (name) {
-      svg.classList.add("show-" + name);
-    });
-    var where = svg.querySelector(".where-label");
-    where.textContent = WATER_NAME[spec.water] || "Pool";
-    svg.querySelector("title").textContent = label || "Amita shows the move";
-    svg.setAttribute("role", "img");
-    svg.setAttribute("aria-label", label || "Amita shows the move");
-    if (options.portrait) svg.setAttribute("viewBox", "142 16 132 188");
-
-    var id = move.replace(/[^a-z0-9-]/g, "");
-    var pre = '.scene[data-move="' + id + '"] ';
-    var css = [
-      rule(pre + ".girl-pos", frameBlock(id + "-body", spec.body, "transform"), spec.bodyDur)
-    ];
-    spin(svg.querySelector(".arm-l"), spec.armL, spec.armDur);
-    spin(svg.querySelector(".arm-r"), spec.armR, spec.armDur);
-    spin(svg.querySelector(".leg-l"), spec.legL, spec.legDur);
-    spin(svg.querySelector(".leg-r"), spec.legR, spec.legDur);
-    spin(svg.querySelector(".knee-l"), spec.kneeL, spec.legDur);
-    spin(svg.querySelector(".knee-r"), spec.kneeR, spec.legDur);
-    if (spec.inner) applyMotion(svg.querySelector(".girl"), spec.inner, spec.innerDur || spec.bodyDur);
-    if (spec.fade) {
-      Object.keys(spec.fade).forEach(function (sel, index) {
-        css.push(fadeRule(pre + sel, id + "-fade" + index, spec.fade[sel], spec.bodyDur));
-      });
-    }
-    var style = document.getElementById("amita-move-style");
-    if (!style) {
-      style = document.createElement("style");
-      style.id = "amita-move-style";
-      document.head.appendChild(style);
-    }
-    style.textContent = css.join("");
+  root.mountAmita = function (el, move, label) {
+    el.textContent = "";
+    var img = document.createElement("img");
+    img.className = "amita-picture";
+    img.src = "/swimming/amita.png";
+    img.alt = label || "Amita";
+    el.appendChild(img);
   };
 })(typeof window === "undefined" ? globalThis : window);
