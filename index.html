@@ -18,8 +18,13 @@
     .chip{border:1px solid rgba(201,163,106,.35);background:rgba(7,22,28,.5);color:var(--cream);padding:6px 10px;}
     h1{font-weight:500;font-size:clamp(1.8rem,5vw,3rem);line-height:1.08;margin:0 0 8px;}
     .lede,.note{color:var(--foam);line-height:1.5;}
+    .hero{margin:14px -16px 18px;background:#7ec8ea;}
+    .hero-banner{display:block;width:100%;height:auto;}
     .start,.door,.room,.melody{display:block;text-decoration:none;border:1px solid rgba(201,163,106,.45);background:rgba(201,163,106,.1);color:var(--cream);padding:14px;margin:12px 0;}
     .start{border-color:rgba(201,163,106,.8);}
+    .door{display:flex;align-items:center;gap:12px;}
+    .door-face{width:128px;height:auto;flex:none;border-radius:16px;background:linear-gradient(180deg,#2ea0d0 0 40%,#f3e6cf 40% 100%);}
+    .door-copy{min-width:0;}
     small{display:block;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;}
     .start strong,.door strong{display:block;font-size:1.25rem;font-weight:500;margin:6px 0;}
     .path{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px;}
@@ -40,6 +45,10 @@
     <h1>Learn how to swim.<br>For real. Free.</h1>
     <p class="lede">Amita is the teacher. A grown-up stays close enough to touch you. Phone down in the water.</p>
 
+    <section class="hero">
+      <img class="hero-banner" src="/swimming/hero-banner.jpg" alt="Let's swim and surf with Amita. 48 swim and surf techniques.">
+    </section>
+
     <a class="start" href="/swimming/lesson.html?id=breath">
       <small>1 · Start here</small>
       <strong>Blow bubbles</strong>
@@ -47,9 +56,12 @@
     </a>
 
     <a class="door" href="/swimming/">
-      <small>Then the school</small>
-      <strong>48 free lessons</strong>
-      Bubbles, then starfish, then dance, then swim. Surf last.
+      <img class="door-face" src="/swimming/amita.png" alt="Amita says hello">
+      <span class="door-copy">
+        <small>Then the school</small>
+        <strong>48 free lessons</strong>
+        Bubbles, then starfish, then dance, then swim. Surf last.
+      </span>
     </a>
 
     <div class="path">
