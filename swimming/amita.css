@@ -45,39 +45,37 @@
 .doll-stage.show-full .sea { top: 0; }
 .doll-stage.show-shallow .sea { top: 64%; }
 #stage.doll-stage.show-mouth {
-  background: linear-gradient(180deg, #e7f6ff 0%, #b9e3f8 62%, #8ecfed 100%);
+  background: linear-gradient(180deg, #e7f6ff 0%, #c5e8f8 100%);
 }
 .doll-stage.show-mouth .sea {
-  top: 30%;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 18px),
-    linear-gradient(180deg, #5eb6dc 0%, #1c86c9 26%, #0f5e96 100%);
+  top: 31%;
+  background: linear-gradient(180deg, #2b94c9 0%, #1876b4 20%, #0e568c 100%);
 }
 .doll-stage.show-mouth .sea:before {
   content: "";
   position: absolute;
-  left: -4%;
-  right: -4%;
-  top: -7px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .42);
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, .8);
 }
 .doll-stage[data-move="breath"] .bubbles {
-  left: 46%;
-  top: 6%;
-  height: 78px;
+  left: 49%;
+  top: 4%;
+  width: 34px;
+  height: 62px;
 }
 .doll-stage[data-move="breath"] .bubbles:after {
   content: "";
   position: absolute;
-  left: 2px;
-  bottom: 2px;
-  width: 13px;
-  height: 13px;
+  left: 0;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(255, 255, 255, .96);
-  box-shadow: 16px 4px 0 -2px rgba(255, 255, 255, .9), 8px -6px 0 -3px rgba(255, 255, 255, .85);
+  box-shadow: 14px 2px 0 -1px rgba(255, 255, 255, .92), 7px -4px 0 -2px rgba(255, 255, 255, .88);
 }
 .doll-stage .rig {
   position: absolute;

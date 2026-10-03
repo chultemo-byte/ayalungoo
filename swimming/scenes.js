@@ -19,12 +19,12 @@
     breath: {
       water: "pool", dur: "5.2s", place: "place-low", flags: ["bubbles", "mouth"], hold: 1,
       doll: [
-        "rotate(6deg) translateY(10px)",
-        "rotate(8deg) translateY(14px)",
-        "rotate(8deg) translateY(14px)",
-        "rotate(-2deg) translateY(-36px)"
+        "translateY(0px)",
+        "translateY(4px)",
+        "translateY(4px)",
+        "translateY(-58px)"
       ],
-      dollAt: ["0%", "16%", "72%", "100%"],
+      dollAt: ["0%", "14%", "68%", "100%"],
       bubbles: [0, 1, 1, 0],
       bubAt: ["0%", "14%", "74%", "88%"]
     },
