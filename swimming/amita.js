@@ -912,50 +912,6 @@
     node.appendChild(anim);
   }
 
-  function toSvgTransform(value) {
-    return String(value).replace(/px/g, "").replace(/deg/g, "").replace(/,/g, " ");
-  }
-
-  function keyTimesFor(count) {
-    if (count === 2) return "0;0.5;1";
-    if (count === 3) return "0;0.5;1";
-    return "0;0.3;0.62;1";
-  }
-
-  function applyMotion(node, values, dur) {
-    if (!node || !values) return;
-    if (typeof values === "string" || stillMotion()) {
-      node.setAttribute("transform", toSvgTransform(typeof values === "string" ? values : values[0]));
-      return;
-    }
-    var anim = document.createElementNS(SVG_NS, "animate");
-    anim.setAttribute("attributeName", "transform");
-    anim.setAttribute("dur", dur || "3s");
-    anim.setAttribute("repeatCount", "indefinite");
-    var frames = values.slice();
-    if (frames.length === 2) frames.push(frames[0]);
-    anim.setAttribute("values", frames.map(toSvgTransform).join(";"));
-    anim.setAttribute("keyTimes", keyTimesFor(frames.length));
-    node.appendChild(anim);
-  }
-
-  function fadeMotion(node, values, dur) {
-    if (!node || !values) return;
-    if (typeof values === "string" || stillMotion()) {
-      node.setAttribute("opacity", typeof values === "string" ? values : values[0]);
-      return;
-    }
-    var anim = document.createElementNS(SVG_NS, "animate");
-    anim.setAttribute("attributeName", "opacity");
-    anim.setAttribute("dur", dur || "3s");
-    anim.setAttribute("repeatCount", "indefinite");
-    var frames = values.slice();
-    if (frames.length === 2) frames.push(frames[0]);
-    anim.setAttribute("values", frames.join(";"));
-    anim.setAttribute("keyTimes", keyTimesFor(frames.length));
-    node.appendChild(anim);
-  }
-
   function showPortrait(el, label) {
     var img = document.createElement("img");
     img.className = "amita-picture";
@@ -964,12 +920,27 @@
     el.appendChild(img);
   }
 
-  var SVG_NS = "http://www.w3.org/2000/svg";
+  var moveSerial = 0;
+
+  function motionCSS(selector, values, dur, name) {
+    if (values == null) return "";
+    if (typeof values === "string") return selector + "{transform:" + values + "}";
+    return rule(selector, frameBlock(name, values, "transform"), dur || "3s");
+  }
+
+  function opacityCSS(selector, values, dur, name) {
+    if (values == null) return "";
+    if (typeof values === "string") return selector + "{opacity:" + values + "}";
+    return fadeRule(selector, name, values, dur || "3s");
+  }
 
   function mountMove(el, pose, label) {
+    moveSerial += 1;
+    var id = "amita-move-" + moveSerial;
     var holder = document.createElement("div");
     holder.innerHTML = SVG;
     var svg = holder.querySelector("svg");
+    svg.id = id;
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", label || "Amita");
     var title = svg.querySelector("title");
@@ -981,20 +952,28 @@
     });
     var where = svg.querySelector(".where-label");
     if (where) where.textContent = WATER_NAME[pose.water] || "";
+    var css = [
+      motionCSS("#" + id + " .girl-pos", pose.body, pose.bodyDur, id + "-body")
+    ];
+    if (pose.inner) {
+      css.push("#" + id + " .girl{transform-box:fill-box;transform-origin:50% 42%;}");
+      css.push(motionCSS("#" + id + " .girl", pose.inner, pose.innerDur || pose.bodyDur, id + "-inner"));
+    }
+    if (pose.fade) {
+      Object.keys(pose.fade).forEach(function (selector, index) {
+        css.push(opacityCSS("#" + id + " " + selector, pose.fade[selector], pose.bodyDur, id + "-fade-" + index));
+      });
+    }
+    var style = document.createElement("style");
+    style.textContent = css.filter(Boolean).join("");
+    el.appendChild(style);
     el.appendChild(svg);
-    applyMotion(svg.querySelector(".girl-pos"), pose.body, pose.bodyDur);
-    if (pose.inner) applyMotion(svg.querySelector(".girl"), pose.inner, pose.innerDur || pose.bodyDur);
     spin(svg.querySelector(".arm-l"), pose.armL, pose.armDur);
     spin(svg.querySelector(".arm-r"), pose.armR, pose.armDur);
     spin(svg.querySelector(".leg-l"), pose.legL, pose.legDur);
     spin(svg.querySelector(".leg-r"), pose.legR, pose.legDur);
     spin(svg.querySelector(".knee-l"), pose.kneeL, pose.legDur);
     spin(svg.querySelector(".knee-r"), pose.kneeR, pose.legDur);
-    if (pose.fade) {
-      Object.keys(pose.fade).forEach(function (selector) {
-        fadeMotion(svg.querySelector(selector), pose.fade[selector], pose.bodyDur);
-      });
-    }
   }
 
   root.mountAmita = function (el, move, label, options) {
