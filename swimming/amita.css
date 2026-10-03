@@ -21,6 +21,42 @@
   max-width: 100%;
   max-height: 70vh;
 }
+#stage.locked-stage {
+  display: block;
+  position: relative;
+  background: #1f7ec4;
+  overflow: hidden;
+}
+.locked-move { position: relative; width: 100%; }
+.locked-amita { display: block; width: 100%; height: auto; }
+.locked-bubbles {
+  position: absolute;
+  left: 46%;
+  top: 21%;
+  width: 48px;
+  height: 70px;
+  z-index: 3;
+  pointer-events: none;
+}
+.locked-bubbles span {
+  position: absolute;
+  top: 42px;
+  left: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .95);
+  animation: locked-bubble-rise 1.8s ease-in infinite;
+}
+.locked-bubbles span:nth-child(2) { left: 24px; top: 46px; width: 8px; height: 8px; animation-duration: 2.1s; animation-delay: .35s; }
+.locked-bubbles span:nth-child(3) { left: 16px; top: 40px; width: 9px; height: 9px; animation-duration: 1.6s; animation-delay: .7s; }
+@keyframes locked-bubble-rise {
+  from { transform: translate(0, 4px); opacity: .95; }
+  to { transform: translate(4px, -52px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .locked-move, .locked-bubbles, .locked-bubbles span { animation: none !important; }
+}
 .girl-pos { transform-box: view-box; transform-origin: 0 0; }
 .scene .sky { fill: #08323c; }
 .scene .water-fill { fill: #0e6272; }

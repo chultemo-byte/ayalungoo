@@ -912,12 +912,115 @@
     node.appendChild(anim);
   }
 
+  var LOCKED_SRC = "/swimming/amita-locked.jpg";
+
+  function step(x, y, rot, scale) {
+    return [x, y, rot, scale];
+  }
+
+  function lockedTransform(part) {
+    return "translate(" + part[0] + "px," + part[1] + "px) rotate(" + part[2] + "deg) scale(" + part[3] + ")";
+  }
+
+  var LOCKED_MOVES = {
+    breath: { dur: "3.6s", origin: "50% 84%", bubbles: true, steps: [step(0, 0, 0, 1), step(8, 16, 16, 1), step(4, 22, 20, 1), step(0, -8, -4, 1)] },
+    "float-back": { dur: "4.4s", origin: "50% 50%", steps: [step(0, 8, -78, 0.78), step(0, -6, -86, 0.78)] },
+    "float-tummy": { dur: "4.2s", origin: "50% 50%", steps: [step(0, 6, 82, 0.78), step(0, -4, 90, 0.78)] },
+    glide: { dur: "3.2s", origin: "50% 50%", steps: [step(-36, 0, 86, 0.7), step(48, 0, 86, 0.7)] },
+    flutter: { dur: "0.7s", origin: "50% 55%", steps: [step(-20, 4, 84, 0.72), step(24, -6, 88, 0.72)] },
+    frog: { dur: "2.2s", origin: "50% 50%", steps: [step(-28, 8, 80, 0.74), step(10, 0, 88, 0.7), step(36, -4, 86, 0.74), step(-28, 8, 80, 0.74)] },
+    dolphin: { dur: "1.5s", origin: "50% 50%", steps: [step(-30, 8, 70, 0.72), step(0, 18, 98, 0.72), step(36, 4, 74, 0.72), step(-30, 8, 70, 0.72)] },
+    scull: { dur: "1.6s", origin: "50% 50%", steps: [step(0, 4, -82, 0.78), step(0, -2, -98, 0.78)] },
+    tread: { dur: "0.9s", origin: "50% 80%", steps: [step(0, 0, 0, 0.92), step(0, -14, 0, 0.92)] },
+    streamline: { dur: "2.8s", origin: "50% 50%", steps: [step(-48, 0, 88, 0.66), step(56, 0, 88, 0.66)] },
+    "roll-breathe": { dur: "3s", origin: "50% 50%", steps: [step(0, 6, 90, 0.74), step(0, -8, 28, 0.74), step(0, 6, 90, 0.74)] },
+    "soft-body": { dur: "4.8s", origin: "50% 50%", steps: [step(0, 4, -80, 0.8), step(0, -6, -96, 0.86)] },
+    freestyle: { dur: "1.4s", origin: "50% 50%", steps: [step(-32, 2, 86, 0.72), step(34, -4, 94, 0.72)] },
+    backstroke: { dur: "1.5s", origin: "50% 50%", steps: [step(36, 2, -86, 0.72), step(-32, -4, -96, 0.72)] },
+    breaststroke: { dur: "2.6s", origin: "50% 50%", steps: [step(-34, 6, 82, 0.74), step(8, 0, 88, 0.7), step(40, -2, 86, 0.74), step(-34, 6, 82, 0.74)] },
+    butterfly: { dur: "1.45s", origin: "50% 50%", steps: [step(-36, 10, 68, 0.72), step(0, 20, 102, 0.72), step(40, 6, 70, 0.72), step(-36, 10, 68, 0.72)] },
+    sidestroke: { dur: "1.8s", origin: "50% 50%", steps: [step(-24, 4, 62, 0.76), step(28, -2, 74, 0.76)] },
+    "elementary-back": { dur: "2.8s", origin: "50% 50%", steps: [step(20, 4, -88, 0.76), step(-8, 0, -80, 0.76), step(-24, -2, -88, 0.76), step(20, 4, -88, 0.76)] },
+    "survival-back": { dur: "4.2s", origin: "50% 50%", steps: [step(8, 4, -84, 0.8), step(-10, -4, -92, 0.8)] },
+    "sit-entry": { dur: "3.4s", origin: "50% 70%", steps: [step(-40, -30, 6, 0.86), step(-8, 8, 12, 0.86), step(20, 18, 0, 0.86), step(-40, -30, 6, 0.86)] },
+    "stand-entry": { dur: "3.2s", origin: "50% 80%", steps: [step(-50, -36, 0, 0.84), step(-10, 6, 8, 0.84), step(16, 16, 0, 0.84), step(-50, -36, 0, 0.84)] },
+    "shallow-dive": { dur: "2.6s", origin: "50% 40%", steps: [step(-46, -20, 16, 0.78), step(0, 10, 70, 0.74), step(48, 18, 96, 0.7), step(-46, -20, 16, 0.78)] },
+    "climb-out": { dur: "3.3s", origin: "50% 70%", steps: [step(18, 16, 0, 0.86), step(-10, 0, -10, 0.86), step(-48, -28, 0, 0.86), step(18, 16, 0, 0.86)] },
+    "river-entry": { dur: "3.6s", origin: "50% 82%", steps: [step(-48, 6, 0, 0.88), step(-8, 10, 0, 0.88), step(28, 14, 0, 0.88), step(-48, 6, 0, 0.88)] },
+    "river-exit": { dur: "3.6s", origin: "50% 82%", steps: [step(28, 14, 0, 0.88), step(-8, 8, 0, 0.88), step(-48, 4, 0, 0.88), step(28, 14, 0, 0.88)] },
+    "ocean-entry": { dur: "3.8s", origin: "50% 82%", steps: [step(-46, 4, -4, 0.88), step(0, 10, -8, 0.88), step(30, 14, 0, 0.88), step(-46, 4, -4, 0.88)] },
+    "ocean-exit": { dur: "3.8s", origin: "50% 82%", steps: [step(32, 14, 4, 0.88), step(0, 8, 8, 0.88), step(-46, 2, 0, 0.88), step(32, 14, 4, 0.88)] },
+    sighting: { dur: "3s", origin: "50% 50%", steps: [step(-16, 8, 90, 0.74), step(8, -12, 42, 0.74), step(28, 6, 90, 0.74)] },
+    "wave-breath": { dur: "3.2s", origin: "50% 50%", steps: [step(0, 12, 96, 0.74), step(6, -14, 36, 0.74), step(12, 10, 94, 0.74)] },
+    "river-cross": { dur: "2.2s", origin: "50% 50%", steps: [step(-40, 0, 88, 0.7), step(44, 0, 88, 0.7)] },
+    "lake-swim": { dur: "4s", origin: "50% 50%", steps: [step(-28, 2, 84, 0.74), step(32, -2, 90, 0.74)] },
+    "ocean-trip": { dur: "4.2s", origin: "50% 82%", steps: [step(-44, 4, 0, 0.88), step(24, 12, 0, 0.88), step(-44, 4, 0, 0.88)] },
+    rip: { dur: "3.4s", origin: "50% 50%", steps: [step(0, 8, -86, 0.74), step(36, -6, -86, 0.74)] },
+    "help-float": { dur: "4s", origin: "50% 60%", steps: [step(0, 6, 0, 0.78), step(0, -4, 0, 0.7)] },
+    huddle: { dur: "3.2s", origin: "50% 80%", steps: [step(-6, 4, 0, 0.9), step(6, -2, 0, 0.9)] },
+    "reach-rescue": { dur: "2.8s", origin: "30% 70%", steps: [step(-36, 0, -8, 0.86), step(-8, 0, -18, 0.86)] },
+    paddle: { dur: "1.4s", origin: "50% 50%", steps: [step(-30, 4, 84, 0.72), step(32, -2, 92, 0.72)] },
+    "duck-dive": { dur: "2.8s", origin: "50% 45%", steps: [step(-24, -4, 70, 0.74), step(8, 28, 110, 0.7), step(40, 0, 78, 0.74), step(-24, -4, 70, 0.74)] },
+    "turtle-roll": { dur: "3.2s", origin: "50% 50%", steps: [step(0, 0, 86, 0.72), step(0, 10, 180, 0.72), step(0, 10, 180, 0.72), step(0, 0, 86, 0.72)] },
+    "pop-up": { dur: "2.8s", origin: "50% 60%", steps: [step(0, 10, 86, 0.74), step(0, -4, 32, 0.8), step(0, -16, 0, 0.9), step(0, 10, 86, 0.74)] },
+    takeoff: { dur: "3s", origin: "50% 60%", steps: [step(-28, 12, 88, 0.72), step(8, 0, 36, 0.8), step(28, -16, 0, 0.9), step(-28, 12, 88, 0.72)] },
+    trim: { dur: "2.4s", origin: "50% 78%", steps: [step(0, 0, 0, 0.9), step(0, -8, 0, 0.9)] },
+    "bottom-turn": { dur: "2.6s", origin: "50% 75%", steps: [step(-12, 0, 14, 0.9), step(16, 0, -16, 0.9)] },
+    whitewater: { dur: "1.6s", origin: "50% 50%", steps: [step(-20, 6, 72, 0.74), step(36, -2, 80, 0.74)] },
+    wipeout: { dur: "2.6s", origin: "50% 50%", steps: [step(-8, 0, 70, 0.74), step(10, -8, 150, 0.7), step(18, 12, 210, 0.7), step(-8, 0, 70, 0.74)] },
+    "catch-wave": { dur: "2.4s", origin: "50% 50%", steps: [step(-40, 4, 90, 0.72), step(0, 0, 84, 0.72), step(48, -4, 78, 0.72), step(-40, 4, 90, 0.72)] },
+    "tummy-balance": { dur: "3.4s", origin: "50% 50%", steps: [step(0, 2, 80, 0.76), step(0, -2, 98, 0.76)] },
+    "knees-balance": { dur: "2.4s", origin: "50% 72%", steps: [step(-4, 0, -6, 0.88), step(6, -6, 8, 0.88)] }
+  };
+
+  function lockedStops(steps) {
+    if (steps.length === 2) return [["0%,100%", steps[0]], ["50%", steps[1]]];
+    if (steps.length === 3) return [["0%", steps[0]], ["50%", steps[1]], ["100%", steps[2]]];
+    return [["0%", steps[0]], ["30%", steps[1]], ["62%", steps[2]], ["100%", steps[3]]];
+  }
+
   function showPortrait(el, label) {
     var img = document.createElement("img");
     img.className = "amita-picture";
-    img.src = "/swimming/amita.png";
+    img.src = LOCKED_SRC;
     img.alt = label || "Amita";
     el.appendChild(img);
+  }
+
+  function mountLocked(el, move, label) {
+    var motion = LOCKED_MOVES[move] || { dur: "3.2s", origin: "50% 80%", steps: [step(0, 0, 0, 1), step(0, -8, 0, 1)] };
+    var name = "locked-" + String(move || "move").replace(/[^a-z0-9-]/g, "");
+    el.classList.add("locked-stage");
+    el.setAttribute("data-move", move || "");
+    var style = document.createElement("style");
+    var frames = lockedStops(motion.steps).map(function (pair) {
+      return pair[0] + "{transform:" + lockedTransform(pair[1]) + "}";
+    }).join("");
+    style.textContent = "@keyframes " + name + "{" + frames + "}";
+    if (motion.bubbles) {
+      style.textContent += "@keyframes " + name + "-bubbles{0%,42%{opacity:1}70%,86%{opacity:0}100%{opacity:1}}";
+    }
+    el.appendChild(style);
+    var mover = document.createElement("div");
+    mover.className = "locked-move";
+    mover.style.transformOrigin = motion.origin || "50% 50%";
+    mover.style.animation = name + " " + (motion.dur || "3s") + " ease-in-out infinite";
+    mover.style.transform = lockedTransform(motion.steps[0]);
+    var img = document.createElement("img");
+    img.className = "locked-amita";
+    img.src = LOCKED_SRC;
+    img.alt = label || "Amita";
+    mover.appendChild(img);
+    if (motion.bubbles) {
+      var bubbles = document.createElement("div");
+      bubbles.className = "locked-bubbles";
+      bubbles.style.animation = name + "-bubbles " + motion.dur + " ease-in-out infinite";
+      bubbles.appendChild(document.createElement("span"));
+      bubbles.appendChild(document.createElement("span"));
+      bubbles.appendChild(document.createElement("span"));
+      mover.appendChild(bubbles);
+    }
+    el.appendChild(mover);
   }
 
   var moveSerial = 0;
@@ -978,16 +1081,12 @@
 
   root.mountAmita = function (el, move, label, options) {
     el.textContent = "";
+    el.classList.remove("locked-stage");
     options = options || {};
     if (options.portrait) {
       showPortrait(el, label);
       return;
     }
-    var pose = root.AMITA_POSES[move];
-    if (!pose) {
-      showPortrait(el, label);
-      return;
-    }
-    mountMove(el, pose, label);
+    mountLocked(el, move, label);
   };
 })(typeof window === "undefined" ? globalThis : window);
