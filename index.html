@@ -4,157 +4,76 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ayalungoo — free living school</title>
-  <meta name="description" content="Free swimming school. Float first. Play your song. Amita is the teacher." />
+  <meta name="description" content="Free swimming school. Mouth under. Bubbles. Then float. Amita is the teacher." />
   <meta name="theme-color" content="#07161c" />
   <link rel="manifest" href="/manifest.json" />
-  <link rel="stylesheet" href="/swimming/amita.css" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <style>
     :root { --deep:#07161c; --foam:#d7ece8; --cream:#f4efe4; --gold:#c9a36a; --ink:#e8f2f0; --muted:#9bb8b4; }
     * { box-sizing: border-box; } html,body{margin:0;}
     body{font-family:Georgia,serif;color:var(--ink);background:linear-gradient(180deg,#07161c,#0b2a33 55%,#061318);}
-    .wrap{max-width:1100px;margin:0 auto;padding:22px 16px 48px;}
-    header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+    .wrap{max-width:760px;margin:0 auto;padding:22px 16px 48px;}
+    header{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px;}
     .mark{letter-spacing:.08em;text-transform:uppercase;} .mark span{color:var(--gold);}
     .chip{border:1px solid rgba(201,163,106,.35);background:rgba(7,22,28,.5);color:var(--cream);padding:6px 10px;}
-    h1{font-weight:500;font-size:clamp(1.8rem,5vw,3.1rem);line-height:1.08;margin:0 0 8px;}
-    .lede,.note{color:var(--foam);line-height:1.5;max-width:40rem;}
-    .hero{margin:14px -16px 18px;background:#7ec8ea;}
-    .hero-banner{display:block;width:100%;height:auto;}
-    .door{display:flex;align-items:center;gap:12px;text-decoration:none;border:1px solid rgba(201,163,106,.55);background:rgba(201,163,106,.12);color:var(--cream);padding:12px;margin:0 0 18px;}
-    .door-amita{width:150px;flex:none;border-radius:16px;overflow:hidden;}
-    .door-copy{min-width:0;}
-    .door small{display:block;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;}
-    .door .purpose-line{display:block;color:var(--cream);font-size:1.35rem;line-height:1.25;margin:6px 0;}
-    .door #door-progress{display:block;color:var(--foam);font-size:1.05rem;}
-    .melody{background:rgba(8,24,30,.72);border:1px solid rgba(201,163,106,.28);padding:14px;margin:16px 0;}
-    .melody h2{margin:0 0 6px;font-weight:500;}
-    .where{color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem;}
+    h1{font-weight:500;font-size:clamp(1.8rem,5vw,3rem);line-height:1.08;margin:0 0 8px;}
+    .lede,.note{color:var(--foam);line-height:1.5;}
+    .start,.door,.room,.melody{display:block;text-decoration:none;border:1px solid rgba(201,163,106,.45);background:rgba(201,163,106,.1);color:var(--cream);padding:14px;margin:12px 0;}
+    .start{border-color:rgba(201,163,106,.8);}
+    small{display:block;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;}
+    .start strong,.door strong{display:block;font-size:1.25rem;font-weight:500;margin:6px 0;}
+    .path{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px;}
+    .stone{border:1px solid rgba(201,163,106,.28);background:rgba(7,22,28,.45);color:var(--cream);padding:10px 12px;text-decoration:none;}
+    .stone small{font-size:.62rem;}
+    .melody{background:rgba(8,24,30,.72);}
     .frame{position:relative;padding-top:56.25%;background:#041014;margin:10px 0;}
     .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-    .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-    a.chip{text-decoration:none;}
-    .path{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;}
-    .stone{border:1px solid rgba(201,163,106,.28);background:rgba(7,22,28,.45);color:var(--cream);padding:10px 12px;text-decoration:none;}
-    .stone small{display:block;color:var(--gold);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;}
-    .stage{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;}
-    .lesson,.chat{background:rgba(8,24,30,.72);border:1px solid rgba(215,236,232,.12);padding:16px;min-height:280px;}
-    .log{max-height:240px;overflow:auto;display:flex;flex-direction:column;gap:8px;}
-    .bubble{padding:8px 10px;} .amita{background:rgba(26,90,99,.45);border-left:2px solid var(--gold);}
-    .who{display:block;color:var(--gold);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;}
-    form.ask{display:flex;gap:8px;margin-top:10px;}
-    input{flex:1;background:#061318;border:1px solid rgba(215,236,232,.2);color:var(--cream);padding:8px 10px;}
-    button.go{background:var(--gold);color:#1a1208;border:0;padding:8px 12px;font-weight:600;cursor:pointer;}
     footer{margin-top:22px;color:var(--muted);font-size:.84rem;line-height:1.5;}
-    @media(max-width:860px){.stage{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="mark">Ayalu<span>ngoo</span></div>
-      <div><span class="chip">Free</span></div>
+      <span class="chip">Free</span>
     </header>
     <h1>Learn how to swim.<br>For real. Free.</h1>
-    <p class="lede">This school gives. Float first. Then dance. Then swim. Amita is the teacher.</p>
+    <p class="lede">Amita is the teacher. A grown-up stays close enough to touch you. Phone down in the water.</p>
 
-    <section class="hero">
-      <img class="hero-banner" src="/swimming/hero-banner.jpg" alt="Let's swim &amp; surf with Amita. 48 swim and surf techniques.">
-    </section>
-
-    <a class="door" href="/swimming/">
-      <div class="stage door-amita" id="door-amita"></div>
-      <span class="door-copy">
-        <small>Amita Swimming</small>
-        <span class="purpose-line">A free school where you learn to float, then dance with water.</span>
-        <span id="door-progress">Tap to come in. 48 free lessons.</span>
-      </span>
+    <a class="start" href="/swimming/lesson.html?id=breath">
+      <small>1 · Start here</small>
+      <strong>Blow bubbles</strong>
+      Mouth under the water. She blows. Bubbles appear and rise.
     </a>
 
+    <a class="door" href="/swimming/">
+      <small>Then the school</small>
+      <strong>48 free lessons</strong>
+      Bubbles, then starfish, then dance, then swim. Surf last.
+    </a>
+
+    <div class="path">
+      <a class="stone" href="/swimming/lesson.html?id=breath"><small>1</small>Bubbles</a>
+      <a class="stone" href="/swimming/lesson.html?id=float-back"><small>2</small>Starfish</a>
+      <a class="stone" href="/swimming/lesson.html?id=float-tummy"><small>3</small>Tummy</a>
+      <a class="stone" href="/swimming/lesson.html?id=glide"><small>4</small>Arrow</a>
+      <a class="stone" href="/swimming/"><small>All</small>48</a>
+    </div>
+
+    <section class="room">
+      <small>The five rooms</small>
+      <p class="note">Still. Listen. Dance. Breathe. Stroke. Float before you kick. Dolphin swim is not first.</p>
+    </section>
+
     <section class="melody" id="melody">
-      <div class="where">Melody · her song</div>
+      <small>Melody · on land only</small>
       <h2>like JENNIE</h2>
       <p class="note">Play on land. Hum. Soft belly. Then put the phone down. In the water, a grown-up watches you — not the screen.</p>
       <div class="frame">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/XD00TJ-6WSw?rel=0"
-          title="like JENNIE — official live, on Ayalungoo Melody"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-      <div class="row">
-        <a class="chip" href="https://youtu.be/XD00TJ-6WSw" target="_blank" rel="noopener">Open in YouTube</a>
-        <a class="chip" href="/amita-show.html">Amita shows the shapes</a>
+        <iframe src="https://www.youtube-nocookie.com/embed/XD00TJ-6WSw?rel=0" title="like JENNIE — official live, on Ayalungoo Melody" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
     </section>
-
-    <div class="path">
-      <a class="stone" href="#still"><small>1</small>Still</a>
-      <a class="stone" href="#listen"><small>2</small>Listen</a>
-      <a class="stone" href="#dance"><small>3</small>Dance</a>
-      <a class="stone" href="#breathe"><small>4</small>Breathe</a>
-      <a class="stone" href="#stroke"><small>5</small>Stroke</a>
-      <a class="stone" href="/amita-show.html"><small>Show</small>Amita shows</a>
-    </div>
-
-    <div class="stage">
-      <section class="lesson" id="still">
-        <div class="where">Room 1 of 5</div>
-        <h2>Still — the water holds you</h2>
-        <p>You do not have to kick to stay up. Starfish. Ears in. Eyes to the sky. Soft belly.</p>
-        <p>A grown-up stays close enough to touch you.</p>
-      </section>
-      <section class="chat">
-        <h2>Amita</h2>
-        <div class="log" id="log"></div>
-        <form class="ask" id="form">
-          <input id="q" autocomplete="off" placeholder="Ask Amita…" />
-          <button class="go" type="submit">Speak</button>
-        </form>
-      </section>
-    </div>
-    <footer>Ayalungoo is free. We do not copy the song — YouTube keeps it. Ask a grown-up before a video. A door of Khard Hridaya.</footer>
+    <footer>Ayalungoo is free. A door of Khard Hridaya. We do not copy the song — YouTube keeps it.</footer>
   </div>
-  <script src="/swimming/amita.js"></script>
-  <script>
-    function add(who, text){
-      const d=document.createElement('div');
-      d.className='bubble amita';
-      d.innerHTML='<span class="who">'+who+'</span>'+text;
-      document.getElementById('log').appendChild(d);
-    }
-    add('Amita','I am Amita. This school is free and alive.\n\nYour song is on this page. Play it on land.\nThen starfish — with a grown-up close enough to touch you.');
-    document.getElementById('form').addEventListener('submit',function(e){
-      e.preventDefault();
-      const v=document.getElementById('q').value.trim().toLowerCase();
-      if(!v) return;
-      document.getElementById('q').value='';
-      let a='The water can hold you. Ask about starfish, bubbles, or your song.';
-      if(/song|jennie|music|melody|play/.test(v)) a='Your song is above. Play it on land. Then put the phone down.';
-      if(/float|starfish/.test(v)) a='Starfish. Ears in. Eyes to the sky. Soft belly. You do not kick to stay up.';
-      if(/safety|alone/.test(v)) a='Ask first. Grown-up close enough to touch you. Never alone.';
-      if(/breath|bubble/.test(v)) a='Bubbles out. Air in. Never hold until.';
-      if(/school|lesson|amita swimming/.test(v)) a='Open Amita Swimming on this page. It is free. Start with bubbles, then float. A grown-up stays with you.';
-      add('Amita',a);
-    });
-    (function(){
-      if (window.mountAmita) {
-        window.mountAmita(document.getElementById('door-amita'), 'hello', 'Amita says hello', { portrait: true });
-      }
-      var line=document.getElementById('door-progress');
-      try{
-        var saved=JSON.parse(localStorage.getItem('ayalungoo-swimming')||'{}');
-        var n=0;
-        if(saved.done) Object.keys(saved.done).forEach(function(key){ if(saved.done[key]) n+=1; });
-        if(saved.lastTitle) line.textContent='Pick up where you stopped: '+saved.lastTitle+'. '+n+' of 48 saved on this phone.';
-      }catch(err){}
-      if('serviceWorker' in navigator){
-        window.addEventListener('load', function(){
-          navigator.serviceWorker.register('/sw.js').catch(function(){});
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
