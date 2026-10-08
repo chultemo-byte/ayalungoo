@@ -480,3 +480,23 @@
 @media (prefers-reduced-motion: reduce) {
   .scene, .scene * { animation: none !important; }
 }
+#stage.rig-stage {
+  display: block;
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: #9fd4f5;
+}
+#stage.rig-stage svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.rig-sky { fill: #9fd4f5; }
+.rig-water { fill: #1c86c9; }
+.water-river .rig-sky { fill: #d7ead4; }
+.water-river .rig-water { fill: #1d6a52; }
+.water-lake .rig-sky { fill: #d5eef5; }
+.water-lake .rig-water { fill: #14748a; }
+.water-ocean .rig-sky { fill: #b9dff5; }
+.water-ocean .rig-water { fill: #0a5684; }
