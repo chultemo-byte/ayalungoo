@@ -986,7 +986,8 @@
       showPortrait(el, label);
       return;
     }
-    if (root.mountDoll && root.mountDoll(el, move, label)) return;
+    if (root.mountKeys && root.mountKeys(el, move, label)) return;
+    if (root.mountRig && root.mountRig(el, move, label)) return;
     showPortrait(el, label);
   };
 })(typeof window === "undefined" ? globalThis : window);
