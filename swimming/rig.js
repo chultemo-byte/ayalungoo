@@ -107,57 +107,151 @@
     }, parent);
   }
 
-  function limb(parent, len, width, tone) {
-    var w = width / 2;
-    el("path", {
-      d: "M " + (-w) + ",-2 C " + (-w - 1) + "," + (len * 0.35) + " " + (-w + 1) + "," + (len * 0.7) + " " + (-w + 2) + "," + len +
-        " L " + (w - 2) + "," + len +
-        " C " + (w) + "," + (len * 0.7) + " " + (w + 1) + "," + (len * 0.35) + " " + w + ",-2 Z",
-      fill: tone
-    }, parent);
+  function shaded(parent, d, tone, shade) {
+    el("path", { d: d, fill: tone }, parent);
+    el("path", { d: d, fill: shade, opacity: 0.22, "clip-path": "none" }, parent);
   }
 
   function arm(parent, side, tone) {
     var near = side === "near";
+    var shade = near ? "#b85f32" : "#8d4524";
+    var light = near ? "#f0b48a" : "#d48958";
     var upper = el("g", null, parent);
-    el("circle", { cx: 0, cy: 0, r: near ? 13 : 11, fill: tone }, upper);
-    limb(upper, 58, near ? 22 : 18, tone);
+    el("path", {
+      d: "M -14,2 C -19,14 -18,32 -15,46 C -13,56 -8,64 -2,64 L 7,62 C 13,52 16,36 15,20 C 14,8 10,2 6,2 C 0,-2 -8,-2 -14,2 Z",
+      fill: tone
+    }, upper);
+    el("path", {
+      d: "M -10,10 C -13,24 -12,42 -7,56 L 0,56 C -5,40 -6,22 -4,10 Z",
+      fill: shade,
+      opacity: 0.5
+    }, upper);
+    el("path", {
+      d: "M 5,12 C 8,24 8,40 5,52 L 8,50 C 10,36 10,20 7,12 Z",
+      fill: light,
+      opacity: 0.32
+    }, upper);
     var elbow = el("g", { transform: "translate(0 56)" }, upper);
     var fore = el("g", null, elbow);
-    el("circle", { cx: 0, cy: 0, r: near ? 12 : 10, fill: tone }, fore);
-    limb(fore, 50, near ? 16 : 13, tone);
-    var hand = el("g", { transform: "translate(0 48)" }, fore);
-    el("circle", { cx: 0, cy: 2, r: near ? 9 : 7.5, fill: tone }, hand);
-    el("ellipse", { cx: near ? 8 : 6, cy: -2, rx: near ? 6 : 5, ry: 3.6, fill: tone }, hand);
-    el("ellipse", { cx: 1, cy: 12, rx: near ? 7 : 5.5, ry: near ? 8 : 6.5, fill: tone }, hand);
+    el("path", {
+      d: "M -11,-8 C -13,6 -14,20 -12,32 C -10,40 -4,46 2,46 C 8,44 11,34 11,22 C 12,10 10,-2 6,-10 C 2,-14 -6,-14 -11,-8 Z",
+      fill: tone
+    }, fore);
+    el("path", {
+      d: "M -8,-2 C -10,12 -9,26 -5,38 L -1,36 C -5,22 -6,8 -4,-2 Z",
+      fill: shade,
+      opacity: 0.48
+    }, fore);
+    el("path", {
+      d: "M 4,-4 C 6,10 6,24 3,36 L 6,34 C 8,20 8,6 5,-4 Z",
+      fill: light,
+      opacity: 0.28
+    }, fore);
+    var hand = el("g", { transform: "translate(0 46)" }, fore);
+    el("path", {
+      d: "M -8,-12 C -12,-2 -8,8 -2,12 C 0,20 -6,22 -8,16 C 2,18 6,22 8,16 C 6,20 12,22 14,14 C 12,18 16,16 16,8 C 18,0 12,-8 6,-10 C 10,-16 4,-18 0,-12 C -4,-16 -8,-14 -8,-12 Z",
+      fill: tone
+    }, hand);
+    el("path", {
+      d: "M -6,8 C -2,16 4,18 8,14",
+      fill: "none",
+      stroke: shade,
+      "stroke-width": 1.1,
+      "stroke-linecap": "round",
+      opacity: 0.7
+    }, hand);
+    el("path", {
+      d: "M 2,6 C 6,14 10,14 12,8",
+      fill: "none",
+      stroke: shade,
+      "stroke-width": 1.1,
+      "stroke-linecap": "round",
+      opacity: 0.7
+    }, hand);
+    el("path", {
+      d: "M 4,-16 C 10,-20 14,-12 9,-8 C 7,-12 5,-14 4,-16 Z",
+      fill: light
+    }, hand);
     return { upper: upper, fore: fore };
   }
 
   function leg(parent, side, tone, soleId) {
     var near = side === "near";
+    var shade = near ? "#b85f32" : "#8d4524";
+    var light = near ? "#f0b48a" : "#d48958";
     var thigh = el("g", null, parent);
-    el("circle", { cx: 0, cy: 0, r: near ? 16 : 13, fill: tone }, thigh);
-    limb(thigh, 74, near ? 26 : 21, tone);
+    el("path", {
+      d: "M -16,4 C -22,20 -20,42 -16,58 C -13,70 -6,78 0,78 L 8,74 C 14,62 16,44 15,26 C 14,12 10,4 6,4 C 0,-2 -8,0 -16,4 Z",
+      fill: tone
+    }, thigh);
+    el("path", {
+      d: "M -11,12 C -15,28 -13,48 -8,66 L -1,66 C -6,46 -8,28 -5,12 Z",
+      fill: shade,
+      opacity: 0.48
+    }, thigh);
     var knee = el("g", { transform: "translate(0 72)" }, thigh);
     var calf = el("g", null, knee);
-    el("circle", { cx: 0, cy: 0, r: near ? 13 : 11, fill: tone }, calf);
-    limb(calf, 68, near ? 18 : 15, tone);
-    var ankle = el("g", { transform: "translate(0 66)" }, calf);
+    el("path", {
+      d: "M -12,-6 C -14,10 -13,28 -10,42 C -8,52 -2,58 4,56 C 10,50 12,36 11,20 C 10,6 8,-4 4,-8 C -2,-12 -8,-10 -12,-6 Z",
+      fill: tone
+    }, calf);
+    el("path", {
+      d: "M -11,-10 C -13,8 -11,24 -7,40 L -3,38 C -7,22 -8,6 -6,-10 Z",
+      fill: shade,
+      opacity: 0.38
+    }, calf);
+    var ankle = el("g", { transform: "translate(0 64)" }, calf);
     var foot = el("g", null, ankle);
-    el("circle", { cx: 0, cy: 0, r: 8, fill: tone }, foot);
     el("path", {
       id: soleId || null,
-      d: "M -6,1 C 8,-10 26,-12 38,-5 C 40,0 36,8 22,11 C 8,13 -4,10 -6,1 Z",
+      d: "M -6,-6 C -14,-2 -14,8 -6,12 C 8,16 24,14 36,8 C 46,4 50,-2 44,-8 C 36,-14 22,-16 10,-12 C 2,-14 -2,-12 -6,-6 Z",
       fill: tone
     }, foot);
     el("path", {
-      d: "M 30,-6 C 34,-8 40,-4 38,-1 C 34,0 30,-2 30,-6 Z",
-      fill: near ? "#f0a06a" : "#d48455"
+      d: "M 4,6 C 16,12 32,8 42,2 C 30,8 16,12 6,8 Z",
+      fill: shade,
+      opacity: 0.45
+    }, foot);
+    el("path", {
+      d: "M 30,-12 C 38,-18 48,-10 44,-4 C 40,-6 34,-8 30,-12 Z",
+      fill: light
+    }, foot);
+    el("path", {
+      d: "M 36,-6 C 40,-12 46,-8 44,-2",
+      fill: "none",
+      stroke: shade,
+      "stroke-width": 1,
+      "stroke-linecap": "round",
+      opacity: 0.55
     }, foot);
     return { thigh: thigh, calf: calf, foot: foot };
   }
 
+  function paintDefs(svg) {
+    if (!svg || svg.querySelector("#skinNear")) return;
+    var defs = el("defs", null, svg);
+    function grad(id, stops) {
+      var node = el("linearGradient", { id: id, x1: "0", y1: "0", x2: "1", y2: "1" }, defs);
+      stops.forEach(function (stop) {
+        el("stop", { offset: stop[0], "stop-color": stop[1] }, node);
+      });
+    }
+    grad("skinNear", [["0%", "#f0b48a"], ["42%", "#e1854a"], ["100%", "#c4622e"]]);
+    grad("skinFar", [["0%", "#d48450"], ["50%", "#c56a30"], ["100%", "#8d4524"]]);
+    grad("suitGrad", [["0%", "#ef3a3a"], ["38%", "#d01218"], ["100%", "#8e1014"]]);
+    grad("hairGrad", [["0%", "#6a4a34"], ["28%", "#2a1c14"], ["100%", "#120e0c"]]);
+    var soft = el("filter", {
+      id: "softPaint",
+      x: "-20%",
+      y: "-20%",
+      width: "140%",
+      height: "140%"
+    }, defs);
+    el("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "0.45" }, soft);
+  }
+
   function drawGirl(parent) {
+    paintDefs(parent.ownerSVGElement);
     var hipFar = el("g", { transform: "translate(-10 6)" }, parent);
     var farLeg = leg(hipFar, "far", SKIN_FAR, null);
 
@@ -166,92 +260,160 @@
     var farArm = arm(shoulderFar, "far", SKIN_FAR);
 
     el("path", {
-      d: "M -22,18 C -28,-16 -26,-62 -18,-96 C -12,-122 0,-138 12,-140 C 26,-136 34,-112 34,-78 C 36,-40 30,-8 18,16 C 8,28 -8,28 -22,18 Z",
-      fill: SUIT
+      d: "M -34,24 C -20,10 -24,-8 -16,-28 C -26,-58 -24,-96 -18,-120 C -10,-140 4,-148 16,-146 C 30,-142 38,-122 40,-104 C 46,-78 34,-48 30,-28 C 26,-8 36,6 22,26 C 8,40 -12,38 -34,24 Z",
+      fill: "url(#suitGrad)"
     }, torso);
     el("path", {
-      d: "M -16,-20 C -6,-8 8,-4 18,-16",
+      d: "M -22,8 C -26,-20 -24,-60 -16,-96 C -12,-118 -4,-132 2,-136 L -2,-120 C -10,-100 -16,-60 -14,-20 C -12,0 -16,8 -22,8 Z",
+      fill: "#8e1014",
+      opacity: 0.35
+    }, torso);
+    el("path", {
+      d: "M 8,-40 C 18,-70 22,-100 16,-124 C 24,-110 28,-80 26,-48 C 24,-24 18,-12 10,-8 C 6,-18 6,-28 8,-40 Z",
+      fill: "#f07070",
+      opacity: 0.28
+    }, torso);
+    el("path", {
+      d: "M 2,-90 H 16 M 9,-102 V -78",
       fill: "none",
       stroke: WHITE,
-      "stroke-width": 2.2,
-      "stroke-linecap": "round"
-    }, torso);
-    el("path", {
-      d: "M 6,-78 H 20 M 13,-90 V -66",
-      fill: "none",
-      stroke: WHITE,
-      "stroke-width": 3.4,
-      "stroke-linecap": "round"
-    }, torso);
-    el("path", {
-      d: "M 2,-128 C 8,-118 10,-108 8,-100",
-      fill: "none",
-      stroke: HAIR,
       "stroke-width": 2.6,
       "stroke-linecap": "round"
     }, torso);
-    el("ellipse", { cx: 14, cy: -96, rx: 7.5, ry: 6, fill: "#e10612", stroke: HAIR, "stroke-width": 1.3 }, torso);
-    el("path", { d: "M 9,-96 H 19", stroke: WHITE, "stroke-width": 1.5, "stroke-linecap": "round" }, torso);
     el("path", {
-      d: "M 4,-136 C 2,-150 14,-156 18,-144 L 12,-132 C 8,-138 6,-136 4,-136 Z",
-      fill: SKIN
+      d: "M -6,-30 C 2,-18 12,-16 20,-28",
+      fill: "none",
+      stroke: WHITE,
+      "stroke-width": 1.5,
+      "stroke-linecap": "round"
     }, torso);
+    el("path", {
+      d: "M 4,-128 C 8,-118 12,-112 14,-106",
+      fill: "none",
+      stroke: "#241810",
+      "stroke-width": 1.7,
+      "stroke-linecap": "round"
+    }, torso);
+    el("ellipse", { cx: 16, cy: -102, rx: 6.2, ry: 5, fill: "#e10612" }, torso);
+    el("path", { d: "M 12,-102 H 20", stroke: WHITE, "stroke-width": 1.2, "stroke-linecap": "round" }, torso);
 
     var neck = el("g", { transform: "translate(10 -132)" }, torso);
     var head = el("g", null, neck);
-    var hair = el("g", null, head);
-    [
-      [-22, -28, 15], [-14, -50, 16], [2, -62, 17], [20, -64, 16], [36, -50, 14],
-      [40, -32, 12], [-26, -10, 12], [-8, -36, 11], [14, -46, 10], [28, -40, 9]
-    ].forEach(function (curl) {
-      el("circle", { cx: curl[0], cy: curl[1], r: curl[2], fill: HAIR }, hair);
-    });
-    [
-      [-10, -46, 6], [8, -58, 6], [24, -52, 5], [34, -36, 4]
-    ].forEach(function (curl) {
-      el("circle", { cx: curl[0], cy: curl[1], r: curl[2], fill: HAIR_SOFT }, hair);
-    });
-    var trail = el("g", null, hair);
-    [[-30, -4, 8], [-38, 8, 6], [-24, 10, 5]].forEach(function (curl) {
-      el("circle", { cx: curl[0], cy: curl[1], r: curl[2], fill: HAIR }, trail);
-    });
-    el("circle", { id: "headball", cx: 14, cy: -32, r: 30, fill: SKIN }, head);
-    el("ellipse", { cx: -2, cy: -30, rx: 7, ry: 11, fill: "#c56d38" }, head);
     el("path", {
-      d: "M 8,-58 C 16,-70 34,-62 36,-48 C 28,-56 16,-56 8,-58 Z",
-      fill: "#f3b08a"
+      d: "M -4,6 C -8,16 -2,24 8,22 C 18,18 20,8 16,-2 L 12,-16 C 8,-6 2,-2 -4,6 Z",
+      fill: "url(#skinNear)"
     }, head);
-    el("ellipse", { cx: 24, cy: -40, rx: 8, ry: 6.2, fill: WHITE }, head);
-    el("circle", { cx: 26.5, cy: -40, r: 3.4, fill: "#3a2416" }, head);
-    el("circle", { cx: 27.8, cy: -41.2, r: 1.15, fill: WHITE }, head);
+    var hair = el("g", null, head);
     el("path", {
-      d: "M 18,-48 Q 26,-50 32,-44",
+      d: "M -8,-16 C -30,-18 -40,-40 -32,-58 C -42,-70 -28,-96 0,-100 C 24,-108 52,-96 58,-74 C 68,-56 58,-36 44,-30 C 36,-18 16,-14 2,-20 C -6,-16 -8,-16 -8,-16 Z",
+      fill: "#1a120e"
+    }, hair);
+    [
+      ["M -6,-14 C -22,-10 -32,-26 -28,-40 C -36,-34 -38,-50 -26,-54 C -18,-44 -12,-30 -6,-24 Z", "#120e0c"],
+      ["M -18,-28 C -34,-24 -44,-40 -36,-54 C -46,-50 -48,-68 -32,-72 C -22,-60 -16,-44 -12,-36 Z", HAIR],
+      ["M -8,-48 C -22,-44 -30,-60 -20,-74 C -28,-70 -26,-88 -10,-90 C 0,-78 -2,-62 -2,-54 Z", "#120e0c"],
+      ["M 6,-62 C -6,-58 -8,-76 6,-90 C 2,-98 18,-104 28,-94 C 20,-100 8,-96 8,-86 C 16,-80 16,-68 10,-64 Z", HAIR],
+      ["M 22,-70 C 14,-66 16,-84 28,-96 C 24,-106 42,-108 50,-94 C 44,-102 32,-100 30,-88 C 40,-82 36,-70 28,-72 Z", "#241810"],
+      ["M 36,-58 C 30,-52 34,-70 46,-78 C 44,-88 58,-86 62,-72 C 56,-80 46,-76 44,-66 C 54,-58 48,-48 40,-52 Z", HAIR],
+      ["M 40,-40 C 34,-34 40,-22 50,-24 C 58,-20 62,-32 54,-40 C 62,-36 60,-22 50,-18 C 42,-16 36,-28 40,-40 Z", "#120e0c"],
+      ["M -24,-18 C -34,-8 -32,6 -22,8 C -16,4 -18,-6 -22,-10 Z", "#2a1c14"]
+    ].forEach(function (curl) {
+      el("path", { d: curl[0], fill: curl[1] }, hair);
+    });
+    el("path", {
+      d: "M -10,-60 C 4,-82 28,-88 42,-70",
+      fill: "none",
+      stroke: "#8a6848",
+      "stroke-width": 2.4,
+      "stroke-linecap": "round"
+    }, hair);
+    el("path", {
+      d: "M 18,-78 C 30,-92 46,-84 50,-68",
+      fill: "none",
+      stroke: "#c4a080",
+      "stroke-width": 1.7,
+      "stroke-linecap": "round"
+    }, hair);
+    var trail = el("g", null, hair);
+    el("path", {
+      d: "M -26,-8 C -40,-2 -42,14 -30,18 C -22,16 -24,4 -28,0 C -32,-2 -30,-8 -26,-8 Z",
+      fill: HAIR
+    }, trail);
+    el("path", {
+      d: "M -34,10 C -46,16 -44,30 -32,30 C -26,26 -28,16 -32,14 Z",
+      fill: "#3a2818"
+    }, trail);
+    el("path", {
+      id: "headball",
+      d: "M -6,-18 C -16,-28 -14,-52 0,-66 C 14,-78 34,-70 42,-56 C 46,-46 44,-36 38,-30 C 50,-28 54,-16 44,-8 C 40,-4 36,-12 32,-16 C 34,-8 30,-2 22,-2 C 12,2 2,-4 -4,-14 C -8,-12 -6,-16 -6,-18 Z",
+      fill: "url(#skinNear)"
+    }, head);
+    el("path", {
+      d: "M 8,-58 C 18,-70 34,-66 40,-54 C 28,-62 16,-60 8,-58 Z",
+      fill: "#f0b48a",
+      opacity: 0.55
+    }, head);
+    el("path", {
+      d: "M 4,-20 C 12,-8 24,-4 32,-10 C 22,-2 10,-6 4,-20 Z",
+      fill: "#c4622e",
+      opacity: 0.28
+    }, head);
+    el("path", {
+      d: "M -8,-24 C -14,-20 -14,-36 -6,-42 C -2,-34 -2,-26 -8,-24 Z",
+      fill: "#d97840"
+    }, head);
+    el("path", {
+      d: "M -6,-28 C -2,-34 0,-30 -4,-26",
+      fill: "none",
+      stroke: "#a85a32",
+      "stroke-width": 1,
+      "stroke-linecap": "round"
+    }, head);
+    el("path", {
+      d: "M 12,-60 C 22,-70 40,-66 46,-54",
+      fill: "none",
+      stroke: "#4a3024",
+      "stroke-width": 2.1,
+      "stroke-linecap": "round"
+    }, head);
+    el("path", {
+      d: "M 16,-54 C 22,-60 38,-58 42,-50 C 36,-46 24,-48 16,-54 Z",
+      fill: "#fff6f0"
+    }, head);
+    el("ellipse", { cx: 31, cy: -51, rx: 4.4, ry: 4.8, fill: "#3a2418" }, head);
+    el("circle", { cx: 32.6, cy: -52.6, r: 1.35, fill: "#fff6f0" }, head);
+    el("path", {
+      d: "M 16,-54 C 24,-58 36,-56 42,-50",
       fill: "none",
       stroke: "#6b3a28",
-      "stroke-width": 1.4,
+      "stroke-width": 1.3,
       "stroke-linecap": "round"
     }, head);
     el("path", {
       id: "nose",
-      d: "M 36,-38 C 48,-34 50,-26 40,-22 C 34,-24 34,-32 36,-38 Z",
-      fill: "#d97840"
+      d: "M 36,-30 C 48,-28 52,-18 44,-14 C 38,-16 36,-24 36,-30 Z",
+      fill: "#e09058"
     }, head);
     el("path", {
       id: "mouth",
-      d: "M 30,-16 Q 40,-12 34,-8",
+      d: "M 32,-12 C 40,-14 46,-10 40,-6 C 36,-8 32,-8 32,-12 Z",
+      fill: "#c45348"
+    }, head);
+    el("path", {
+      d: "M 33,-10 C 39,-11 43,-9 40,-7",
       fill: "none",
-      stroke: "#8a3d28",
-      "stroke-width": 2.4,
+      stroke: "#8d3b34",
+      "stroke-width": 0.8,
       "stroke-linecap": "round"
     }, head);
-    el("ellipse", { cx: 26, cy: -12, rx: 5, ry: 2.6, fill: "#e07858", opacity: 0.7 }, head);
+    el("ellipse", { cx: 24, cy: -16, rx: 5, ry: 3, fill: "#e07858", opacity: 0.45 }, head);
     var bubbles = el("g", { id: "bubbles" }, head);
-    [[46, -10, 5.2, 0], [56, -6, 3.6, 0.32], [40, -4, 3, 0.55], [52, -14, 2.8, 0.16]].forEach(function (spot) {
+    [[48, -8, 5, 0], [58, -4, 3.4, 0.32], [42, -2, 2.8, 0.55], [54, -12, 2.6, 0.16]].forEach(function (spot) {
       var dot = el("circle", {
         cx: spot[0], cy: spot[1], r: spot[2],
-        fill: "rgba(255,255,255,.55)",
+        fill: "rgba(255,255,255,.5)",
         stroke: "rgba(255,255,255,.95)",
-        "stroke-width": 1.6
+        "stroke-width": 1.5
       }, bubbles);
       if (!REDUCE) {
         el("animate", {
@@ -273,18 +435,30 @@
 
     var shoulderNear = el("g", { transform: "translate(18 -108)" }, torso);
     var nearArm = arm(shoulderNear, "near", SKIN);
-    el("ellipse", {
-      cx: 18, cy: -108, rx: 18, ry: 13,
-      fill: SUIT, stroke: WHITE, "stroke-width": 2
+    el("path", {
+      d: "M 6,-124 C 4,-108 8,-96 22,-92 C 34,-90 46,-100 44,-114 C 36,-104 22,-102 14,-108 C 10,-116 8,-122 6,-124 Z",
+      fill: "#c81016"
+    }, torso);
+    el("path", {
+      d: "M 14,-98 C 24,-94 36,-98 42,-108",
+      fill: "none",
+      stroke: WHITE,
+      "stroke-width": 1.2,
+      "stroke-linecap": "butt"
     }, torso);
 
     var hipNear = el("g", { transform: "translate(8 4)" }, parent);
     var nearLeg = leg(hipNear, "near", SKIN, "sole");
     el("path", {
-      d: "M -16,8 C -8,30 6,36 16,30 C 24,18 20,2 10,-4 C 0,-2 -10,0 -16,8 Z",
-      fill: SUIT,
+      d: "M -34,-2 C -26,30 -2,50 20,42 C 38,32 40,6 26,-10 C 12,-18 -10,-14 -24,-6 C -30,-4 -34,-4 -34,-2 Z",
+      fill: "#c81016"
+    }, parent);
+    el("path", {
+      d: "M -8,14 C 0,22 10,20 16,12",
+      fill: "none",
       stroke: WHITE,
-      "stroke-width": 1.6
+      "stroke-width": 1.15,
+      "stroke-linecap": "butt"
     }, parent);
 
     if (!REDUCE) {
@@ -473,7 +647,7 @@
       moveAt: ["0%", "20%", "46%", "72%", "100%"]
     }),
     butterfly: mix(dolphin, {
-      view: "prone", dur: "1.7s", splash: true, x: 200,
+      view: "prone", dur: "1.7s", splash: true, x: 186,
       spin: [92, 84, 96, 86, 92],
       spinAt: ["0%", "28%", "48%", "70%", "100%"],
       torso: [16, -8, 22, -28, 16],
@@ -883,7 +1057,7 @@
     if (view.flip || scene.flip) spinParent = el("g", { transform: "scale(1 -1)" }, place);
     var spin = el("g", null, spinParent);
     var bobWrap = el("g", null, spin);
-    var scaled = el("g", { id: "girl", transform: "scale(1.16)" }, bobWrap);
+    var scaled = el("g", { id: "girl", transform: "scale(1.16)", filter: "url(#softPaint)" }, bobWrap);
     var girl = drawGirl(scaled);
     if (scene.bob) slide(bobWrap, [0], scene.bob, dur, null, 0, "smooth");
 
