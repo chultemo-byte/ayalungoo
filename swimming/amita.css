@@ -500,3 +500,32 @@
 .water-lake .rig-water { fill: #14748a; }
 .water-ocean .rig-sky { fill: #b9dff5; }
 .water-ocean .rig-water { fill: #0a5684; }
+#stage.key-stage {
+  display: block;
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: #9fd4f5;
+}
+#stage.key-stage .key-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0;
+  animation-name: keyfade;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes keyfade {
+  0% { opacity: 1; }
+  12% { opacity: 1; }
+  25% { opacity: 0; }
+  88% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #stage.key-stage .key-frame { animation: none; }
+}
