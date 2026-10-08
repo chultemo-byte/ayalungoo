@@ -140,12 +140,13 @@
 .doll-stage .shore-right { right: 0; left: auto; border-radius: 70px 0 0 0; }
 .doll-stage .face-cover {
   position: absolute;
-  left: 34%;
-  top: 9%;
-  width: 32%;
-  height: 15%;
+  left: 37%;
+  top: 13%;
+  width: 26%;
+  height: 10%;
   border-radius: 50%;
-  background: rgba(12, 110, 170, .78);
+  background: rgba(16, 118, 184, .48);
+  box-shadow: 0 7px 8px rgba(10, 80, 140, .28);
   z-index: 6;
   opacity: 0;
 }
@@ -178,8 +179,65 @@
   height: 26px;
   border-radius: 50%;
   background: rgba(255, 255, 255, .42);
-  z-index: 4;
+  z-index: 2;
+  animation: wave-bob 2.8s ease-in-out infinite;
 }
+.doll-stage .ripples {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46%;
+  height: 16px;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.water-river .ripples { top: 42%; }
+.water-ocean .ripples { top: 40%; }
+.doll-stage.show-full .ripples { top: 30%; }
+.doll-stage.show-shallow .ripples { top: 64%; }
+.doll-stage.show-mouth .ripples { top: 24%; }
+.doll-stage .ripples i {
+  position: absolute;
+  left: -12%;
+  width: 124%;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .72);
+  animation: ripple-drift 3.4s linear infinite;
+}
+.doll-stage .ripples i:nth-child(2) {
+  top: 6px;
+  opacity: .62;
+  animation-duration: 4.6s;
+  animation-delay: -.8s;
+}
+.doll-stage .ripples i:nth-child(3) {
+  top: 11px;
+  opacity: .38;
+  animation-duration: 5.2s;
+  animation-delay: -1.6s;
+}
+.doll-stage .splash {
+  position: absolute;
+  left: 22%;
+  top: 80%;
+  width: 36px;
+  height: 22px;
+  z-index: 6;
+  pointer-events: none;
+}
+.doll-stage .splash i {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  animation: splash-pop .65s ease-in infinite;
+}
+.doll-stage .splash i:nth-child(2) { left: 12px; animation-delay: .18s; }
+.doll-stage .splash i:nth-child(3) { left: 22px; width: 5px; height: 5px; animation-delay: .36s; }
 .doll-stage .foam { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
 .doll-stage .foam i {
   position: absolute;
@@ -187,7 +245,10 @@
   height: 14px;
   border-radius: 50%;
   background: rgba(255, 255, 255, .8);
+  animation: foam-drift 2.6s ease-in-out infinite;
 }
+.doll-stage .foam i:nth-child(2) { animation-duration: 3.1s; }
+.doll-stage .foam i:nth-child(3) { animation-duration: 2.2s; }
 .doll-stage .foam i:nth-child(1) { left: 18%; top: 58%; }
 .doll-stage .foam i:nth-child(2) { left: 46%; top: 64%; width: 26px; }
 .doll-stage .foam i:nth-child(3) { right: 16%; top: 54%; }
@@ -206,7 +267,10 @@
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
   border-top: 26px solid #fffaf2;
+  animation: current-push 1.15s ease-in-out infinite alternate;
 }
+.doll-stage .arrows i:nth-child(2) { animation-delay: .2s; }
+.doll-stage .arrows i:nth-child(3) { animation-delay: .4s; }
 .doll-stage .friends { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .doll-stage .friends i {
   position: absolute;
@@ -266,7 +330,12 @@
   .doll-stage .board,
   .doll-stage .face-cover,
   .doll-stage .bubbles,
-  .doll-stage .bubbles i { animation: none !important; }
+  .doll-stage .bubbles i,
+  .doll-stage .ripples i,
+  .doll-stage .splash i,
+  .doll-stage .wave,
+  .doll-stage .foam i,
+  .doll-stage .arrows i { animation: none !important; }
 }
 .locked-move { position: relative; width: 100%; }
 .locked-amita { display: block; width: 100%; height: auto; }
@@ -295,6 +364,27 @@
   0% { transform: translate(0, 8px); opacity: 0; }
   18% { opacity: .98; }
   100% { transform: translate(6px, -78px); opacity: 0; }
+}
+@keyframes ripple-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-48px); }
+}
+@keyframes splash-pop {
+  0% { transform: translate(0, 4px) scale(.6); opacity: 0; }
+  30% { opacity: .95; }
+  100% { transform: translate(2px, -16px) scale(1); opacity: 0; }
+}
+@keyframes wave-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+@keyframes foam-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(7px, -4px); }
+}
+@keyframes current-push {
+  from { transform: translateY(0); opacity: .6; }
+  to { transform: translateY(8px); opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .locked-move, .locked-bubbles, .locked-bubbles span { animation: none !important; }
