@@ -14,6 +14,18 @@
     "shows": "Amita puts her mouth under the water and blows. Bubbles appear at her mouth and rise.",
     "rule": "Waterline above her mouth. She blows. Bubbles appear at the mouth and rise. Then she lifts for one new breath. A grown-up holds her. No one pushes her head under."
   },
+  "motionTemplate": {
+    "locked": true,
+    "from": "dolphin kick",
+    "shows": "Legs stay together like one tail. The wave starts at the chest, the hips rise, both feet finish, then she glides long.",
+    "rules": [
+      "Same Amita every lesson. Pose may change. Face does not.",
+      "The body does the named skill. No back float on a kick lesson.",
+      "One clear cycle, then rest.",
+      "A grown-up stays close enough to touch her. No head push.",
+      "Do not use the real child's photo."
+    ]
+  },
   "bot": {
     "id": "amita",
     "name": "Amita",
