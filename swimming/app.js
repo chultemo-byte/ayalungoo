@@ -1,6 +1,13 @@
 (function () {
   var KEY = "ayalungoo-swimming";
   var LESSONS = window.AMITA_LESSONS || [];
+  var FILMS = {
+    breath: "/swimming/films/breath.mp4",
+    "float-back": "/swimming/films/float-back.mp4",
+    "float-tummy": "/swimming/films/float-tummy.mp4",
+    glide: "/swimming/films/glide.mp4",
+    dolphin: "/swimming/films/dolphin.mp4"
+  };
   var GROUPS = [
     { id: "basics", title: "Water basics", blurb: "First you learn to be calm in the water." },
     { id: "strokes", title: "Strokes", blurb: "A stroke is a way to swim. Here are seven ways." },
@@ -64,6 +71,17 @@
   function paintBar(node, count) {
     if (!node) return;
     node.style.width = Math.round((count / LESSONS.length) * 100) + "%";
+  }
+
+  function showFilm(stage, src, label) {
+    var video = el("video", "amita-film");
+    video.src = src;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.setAttribute("aria-label", label || "Amita");
+    video.poster = "/swimming/amita-locked.jpg";
+    stage.appendChild(video);
   }
 
   function renderSchool() {
@@ -172,10 +190,14 @@
     var stage = el("div", "stage");
     stage.id = "stage";
     root.appendChild(stage);
-    try {
-      if (window.mountAmita) window.mountAmita(stage, lesson.id, lesson.shows);
-    } catch (err) {
-      stage.appendChild(el("p", null, "Amita will show this move when the drawing can load."));
+    if (FILMS[lesson.id]) {
+      showFilm(stage, FILMS[lesson.id], lesson.shows);
+    } else {
+      try {
+        if (window.mountAmita) window.mountAmita(stage, lesson.id, lesson.shows);
+      } catch (err) {
+        stage.appendChild(el("p", null, "Amita will show this move when the drawing can load."));
+      }
     }
     root.appendChild(el("p", "shows", lesson.shows));
     root.appendChild(el("p", "note", "Amita is a drawing, not a photo."));
