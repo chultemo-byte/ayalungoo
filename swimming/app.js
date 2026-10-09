@@ -169,7 +169,7 @@
 
     root.appendChild(el("p", "purpose", lesson.why));
 
-    var stage = el("div", "stage");
+        var stage = el("div", "stage");
     stage.id = "stage";
     root.appendChild(stage);
     try {
