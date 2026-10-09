@@ -169,14 +169,13 @@
 
     root.appendChild(el("p", "purpose", lesson.why));
 
-        var stage = el("div", "stage");
+            var stage = el("div", "stage");
     stage.id = "stage";
     root.appendChild(stage);
-    try {
-      if (window.mountAmita) window.mountAmita(stage, lesson.id, lesson.shows);
-    } catch (err) {
-      stage.appendChild(el("p", null, "Amita will show this move when the drawing can load."));
-    }
+    var picture = el("img", "amita-picture");
+    picture.src = "/swimming/amita-locked.jpg";
+    picture.alt = "Amita";
+    stage.appendChild(picture);
     root.appendChild(el("p", "shows", lesson.shows));
     root.appendChild(el("p", "note", "Amita is a drawing, not a photo."));
 
